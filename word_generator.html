@@ -273,7 +273,7 @@
           words</button>
       </div>
 
-      <hr style="margin-top: 2rem; margin-bottom: 2rem;" />
+      <hr style="margin-top: 2rem;" />
 
     </form>
 
@@ -422,11 +422,11 @@
 
     function displayWords(words) {
       var wordList = document.getElementById('generatedWordList');
-      wordList.innerHTML = '<h2>Generated Words:</h2><ul>';
+      wordList.innerHTML = "<h2>Generated Words:</h2><ul style='margin-bottom: 2rem;'>";
       words.forEach(function (word) {
         wordList.innerHTML += "<li class='result-list'>" + word + "</li>";
       });
-      wordList.innerHTML += '</ul>';
+      wordList.innerHTML += '</ul><br />';
     }
 
     var wordList = [];
