@@ -59,6 +59,16 @@
             height: 20px;
             margin: 5px;
         }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 10px 0;
+        }
     </style>
 </head>
 
@@ -113,14 +123,17 @@
                         onclick='generateQSO()'>Generate</button>
                 </div>
 
-
-
             </fieldset>
         </form>
 
         <table id="qsoTable" class="qsoTable"></table>
 
+        <footer class="footer">
+            K7DRQ's <a href="https://quentincaudron.com/cw_microtools">CW Microtools</a>
+        </footer>
+
     </div>
+
 
     <script>
 
