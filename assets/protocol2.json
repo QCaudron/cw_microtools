@@ -1,0 +1,38 @@
+{
+    "Participant": [
+        "CQ",
+        "CQ",
+        "CQ",
+        "CQ",
+        "CQ",
+        "CALLER",
+        "CALLER",
+        "CALLER",
+        "CALLER",
+        "CALLER"
+    ],
+    "Instructions": [
+        "Thank <CALLERNAME> for the report.",
+        "Tell them about your rig.",
+        "Tell them about your antenna.",
+        "Tell them about the weather.",
+        "Hand it back to <CALLERCALL>.",
+        "Thank <CQNAME> for the report.",
+        "Tell them about your rig.",
+        "Tell them about your antenna.",
+        "Tell them about the weather.",
+        "Hand it back to <CQCALL>."
+    ],
+    "Lines": [
+        "OK <CALLERNAME> FB ES TNX FER RPRT",
+        "RIG <CQRIG> ES PWR <CQPWR>W",
+        "ANT <CQANT> UP <CQHEIGHT> FT",
+        "WX <CQWX> ES TEMP <CQTEMP>F",
+        "OK <CALLERNAME> HW? <span style='text-decoration: overline'>AR</span> <CALLERCALL> DE <CQCALL> K",
+        "FB <CQNAME> TNX FER INFO",
+        "RIG <CALLERRIG> ES PWR <CALLERPWR>W",
+        "ANT <CALLERANT> UP <CALLERHEIGHT> FT",
+        "WX <CALLERWX> ES TEMP <CALLERTEMP>F",
+        "OK <CQNAME> HW? <span style='text-decoration: overline'>AR</span> <CQCALL> DE <CALLERCALL> K"
+    ]
+}

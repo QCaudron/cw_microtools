@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>LICW QSO Protocol - K7DRQ</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+        integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css" />
+
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .qsoTable {
+            border-collapse: separate;
+            border-spacing: 2rem 0;
+        }
+
+        .qsoTable .lineRow {
+            font-weight: 600;
+            font-size: 1.25rem;
+            border-spacing: 0 4rem;
+        }
+
+        .qsoTable .lineRowCQ {
+            color: #8B0000;
+        }
+
+        .qsoTable .lineRowCaller {
+            color: #006400;
+        }
+
+        .qsoTable .instructionsRow {
+            font-size: 0.8rem;
+        }
+
+        .controls {
+            justify-content: center;
+            align-items: center;
+            padding: 8px;
+            margin-right: 10px;
+        }
+
+        input[type=checkbox] {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>LICW QSO Protocol Generator</h1>
+
+        <form class="pure-form pure-form-stacked" style="width: 60%">
+            <fieldset>
+                <div class="pure-g">
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <legend>Your info</legend>
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <legend>Their info (leave blank for random)</legend>
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <input type="text" id="yourCall" class="pure-u-23-24" placeholder="Your callsign"
+                            value="K7DRQ" />
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <input type="text" id="theirCall" class="pure-u-23-24" placeholder="Their callsign" />
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <input type="email" id="yourName" class="pure-u-23-24" placeholder="Your name"
+                            value="Quentin" />
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <input type="text" id="theirName" class="pure-u-23-24" placeholder="Their name" />
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <input type="text" id="yourQTH" class="pure-u-23-24" placeholder="Your QTH" value="Tacoma WA" />
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <input type="text" id="theirQTH" class="pure-u-23-24" placeholder="Their QTH" />
+                    </div>
+                </div>
+                <hr />
+                <div class="pure-g controls" style="margin: 1rem">
+                    <select id="qsoType" name="qsoType">
+                        <option value="protocol1">Protocol 1</option>
+                        <option value="protocol2">Protocol 2</option>
+                        <option value="protocol3">Protocol 3</option>
+                        <option value="protocol4">Protocol 4</option>
+                        <option value="minimalQSO">Minimal QSO</option>
+                        <option value="fullQSO">Full QSO</option>
+                    </select>
+                    <label for="includeInstructions" style="padding-left: 10px">
+                        <input type="checkbox" id="includeInstructions">with instructions
+                    </label>
+                    <button type="button" class="pure-button pure-button-primary" style="margin-left: 1rem"
+                        onclick='generateQSO()'>Generate</button>
+                </div>
+
+
+
+            </fieldset>
+        </form>
+
+        <table id="qsoTable" class="qsoTable"></table>
+
+    </div>
+
+    <script>
+
+        // Some variables for within the QSOs
+        const greetings = ["GM", "GA", "GE"];
+        const RSTs = ["359", "559", "579", "599", "5NN"];
+        const WX = ["SUNNY", "CLOUDY", "RAINING", "WINDY", "FOGGY", "CLEAR", "PARTLY CLOUDY"];
+        const rigs = [
+            "KX2", "KX3", "FT 857D", "FT 817ND", "FT 991A", "FT 450D", "FT 891", "IC 705",
+            "IC 7100", "IC 7300", "IC 7610", "XIEGU X6100", "TS 990S", "TS 590SG", "TS 890S"
+        ];
+        const antennas = [
+            "EFHW", "DIPOLE", "VERTICAL", "LOOP", "RANDOM WIRE", "LONG WIRE", "WINDOM", "SLOPER",
+            "INVERTED V", "INVERTED L", "DELTA LOOP", "QUAD", "YAGI", "BEAM", "MAGNETIC LOOP", "G5RV",
+        ]
+        const powers = ["5", "10", "20", "25", "50", "100", "250", "500"];
+        const heights = ["15", "20", "25", "30", "40", "50", "60", "80"];
+        const occupations = [
+            "TEACHER", "ENGINEER", "DOCTOR", "NURSE", "POLICE OFFICER", "FIRE FIGHTER", "PILOT",
+            "TRUCK DRIVER", "MECHANIC", "CHEF", "CLERK", "PROFESSOR", "SCIENTIST", "WRITER",
+            "JOURNALIST", "TRAINER", "MECHANIC", "ELECTRICIAN", "PLUMBER", "CARPENTER", "FARMER"
+        ];
+
+        // Generate a random US ham radio callsign
+        function generateRandomUSCallsign() {
+            const validFirstLetters = ['A', 'K', 'N', 'W'];
+            const firstLetter = validFirstLetters[Math.floor(Math.random() * validFirstLetters.length)];
+            let prefix = firstLetter;
+
+            // Determine whether to include the second letter or not
+            if (Math.random() > 0.5) {
+                prefix += String.fromCharCode(65 + Math.floor(Math.random() * 26)); // Random letter (A-Z)
+            }
+
+            const digit = Math.floor(Math.random() * 10); // Random number between 0 and 9
+
+            let suffix = '';
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const suffixLength = Math.floor(Math.random() * 3) + 1; // Random suffix length between 1 and 3
+            for (let i = 0; i < suffixLength; i++) {
+                suffix += letters.charAt(Math.floor(Math.random() * letters.length)); // Random letter
+            }
+
+            var callsign = `${prefix}${digit}${suffix}`
+
+            // If the call is only three characters, add a final one
+            if (callsign.length === 3) {
+                callsign += letters.charAt(Math.floor(Math.random() * letters.length));
+            }
+
+            return callsign
+        }
+
+        // Load QSO variables from the form
+        function loadValues() {
+            cqCallsign = document.getElementById("yourCall").value;
+            cqName = document.getElementById("yourName").value;
+            cqQTH = document.getElementById("yourQTH").value;
+            cqWX = WX[Math.floor(Math.random() * WX.length)];
+            cqTemp = Math.floor(Math.random() * 40) + 40;
+            cqRig = rigs[Math.floor(Math.random() * rigs.length)];
+            cqAnt = antennas[Math.floor(Math.random() * antennas.length)];
+            cqPower = powers[Math.floor(Math.random() * powers.length)];
+            cqHeight = heights[Math.floor(Math.random() * heights.length)];
+            cqAge = Math.floor(Math.random() * 60) + 20;
+            cqOccupation = occupations[Math.floor(Math.random() * occupations.length)];
+            cqHamTime = Math.floor(Math.random() * (cqAge - 15 - 3 + 1)) + 3;
+
+            callerCallsign = document.getElementById("theirCall").value;
+            callerName = document.getElementById("theirName").value;
+            callerQTH = document.getElementById("theirQTH").value;
+            callerWX = WX[Math.floor(Math.random() * WX.length)];
+            callerTemp = Math.floor(Math.random() * 40) + 40;
+            callerRig = rigs[Math.floor(Math.random() * rigs.length)];
+            callerAnt = antennas[Math.floor(Math.random() * antennas.length)];
+            callerPower = powers[Math.floor(Math.random() * powers.length)];
+            callerHeight = heights[Math.floor(Math.random() * heights.length)];
+            callerAge = Math.floor(Math.random() * 60) + 20;
+            callerOccupation = occupations[Math.floor(Math.random() * occupations.length)];
+            callerHamTime = Math.floor(Math.random() * (callerAge - 15 - 3 + 1)) + 3;
+
+            withInstructions = document.getElementById("includeInstructions").checked;
+
+            if (callerCallsign === "") {
+                callerCallsign = generateRandomUSCallsign();
+            }
+            if (callerName === "") {
+                callerName = firstNames[Math.floor(Math.random() * firstNames.length)];
+            }
+            if (callerQTH === "") {
+                callerQTH = usCities[Math.floor(Math.random() * usCities.length)];
+            }
+
+            greeting = greetings[Math.floor(Math.random() * greetings.length)];
+            cqRST = RSTs[Math.floor(Math.random() * RSTs.length)];
+            callerRST = RSTs[Math.floor(Math.random() * RSTs.length)];
+        }
+
+        async function loadProtocols() {
+
+            const protocolFiles = [
+                'assets/protocol1.json',
+                'assets/protocol2.json',
+                'assets/protocol3.json',
+                'assets/protocol4.json'
+            ];
+
+            try {
+                const protocolData = await Promise.all(protocolFiles.map(async (file, index) => {
+                    const response = await fetch(file);
+                    return { [`protocol${index + 1}`]: await response.json() };
+                }));
+
+                // Combine data into a single object
+                var allProtocols = Object.assign({}, ...protocolData);
+
+                // Create a protocol for minimum and full QSOs
+                allProtocols["minimalQSO"] = {
+                    "Participant": allProtocols["protocol1"]["Participant"].concat(allProtocols["protocol4"]["Participant"]),
+                    "Lines": allProtocols["protocol1"]["Lines"].concat(allProtocols["protocol4"]["Lines"]),
+                    "Instructions": allProtocols["protocol1"]["Instructions"].concat(allProtocols["protocol4"]["Instructions"])
+                }
+                allProtocols["fullQSO"] = {
+                    "Participant": (
+                        allProtocols["protocol1"]["Participant"]
+                            .concat(allProtocols["protocol2"]["Participant"])
+                            .concat(allProtocols["protocol3"]["Participant"])
+                            .concat(allProtocols["protocol4"]["Participant"])
+                    ),
+                    "Lines": (
+                        allProtocols["protocol1"]["Lines"]
+                            .concat(allProtocols["protocol2"]["Lines"])
+                            .concat(allProtocols["protocol3"]["Lines"])
+                            .concat(allProtocols["protocol4"]["Lines"])
+                    ),
+                    "Instructions": (
+                        allProtocols["protocol1"]["Instructions"]
+                            .concat(allProtocols["protocol2"]["Instructions"])
+                            .concat(allProtocols["protocol3"]["Instructions"])
+                            .concat(allProtocols["protocol4"]["Instructions"])
+                    )
+                }
+            } catch (error) {
+                console.error('Error fetching or processing data:', error);
+            }
+
+            return allProtocols;
+        }
+
+        function styleLineRow(row, participant, line) {
+            row.classList.add('lineRow');
+
+            if (withInstructions) {
+                line += '<br /><br />'
+            }
+
+            if (participant === 'CQ') {
+                row.classList.add('lineRowCQ');
+                row.insertCell().innerHTML = line;
+                row.insertCell();
+            } else if (participant === 'CALLER') {
+                row.classList.add('lineRowCaller');
+                row.insertCell();
+                row.insertCell().innerHTML = line;
+            }
+
+        }
+
+        function styleInstructionsRow(row, participant, instructions) {
+            row.classList.add('instructionsRow');
+
+            if (participant === 'CQ') {
+                row.insertCell().textContent = instructions;
+                row.insertCell().textContent = '';
+            } else if (participant === 'CALLER') {
+
+                row.insertCell().textContent = '';
+                row.insertCell().textContent = instructions;
+            }
+        }
+
+        function fillProtocolTable(protocol) {
+            const table = document.getElementById('qsoTable');
+            table.innerHTML = '';
+
+            // Loop through the data to create table rows
+            for (let i = 0; i < allProtocols[protocol]["Participant"].length; i++) {
+                const participant = allProtocols[protocol].Participant[i];
+                const line = (
+                    allProtocols[protocol].Lines[i]
+                        .replace(/<CQCALL>/g, cqCallsign)
+                        .replace(/<CQNAME>/g, cqName)
+                        .replace(/<CQQTH>/g, cqQTH)
+                        .replace(/<CQRST>/g, cqRST)
+                        .replace(/<CQRIG>/g, cqRig)
+                        .replace(/<CQANT>/g, cqAnt)
+                        .replace(/<CQPWR>/g, cqPower)
+                        .replace(/<CQHEIGHT>/g, cqHeight)
+                        .replace(/<CQWX>/g, cqWX)
+                        .replace(/<CQTEMP>/g, cqTemp)
+                        .replace(/<CQHEIGHT>/g, cqHeight)
+                        .replace(/<CQAGE>/g, cqAge)
+                        .replace(/<CQHAMTIME>/g, cqHamTime)
+                        .replace(/<CQOCCUPATION>/g, cqOccupation)
+
+                        .replace(/<CALLERCALL>/g, callerCallsign)
+                        .replace(/<CALLERNAME>/g, callerName)
+                        .replace(/<CALLERQTH>/g, callerQTH)
+                        .replace(/<CALLERRST>/g, callerRST)
+                        .replace(/<CALLERRIG>/g, callerRig)
+                        .replace(/<CALLERANT>/g, callerAnt)
+                        .replace(/<CALLERPWR>/g, callerPower)
+                        .replace(/<CALLERHEIGHT>/g, callerHeight)
+                        .replace(/<CALLERWX>/g, callerWX)
+                        .replace(/<CALLERTEMP>/g, callerTemp)
+                        .replace(/<CALLERHEIGHT>/g, callerHeight)
+                        .replace(/<CALLERAGE>/g, callerAge)
+                        .replace(/<CALLERHAMTIME>/g, callerHamTime)
+                        .replace(/<CALLEROCCUPATION>/g, callerOccupation)
+
+                        .replace(/<GREETING>/g, greeting)
+
+                        .toUpperCase()
+                );
+                const instructions = (
+                    allProtocols[protocol].Instructions[i]
+                        .replace(/<CQCALL>/g, cqCallsign)
+                        .replace(/<CQNAME>/g, cqName)
+                        .replace(/<CALLERCALL>/g, callerCallsign)
+                        .replace(/<CALLERNAME>/g, callerName)
+                );
+
+                // Create the rows
+                if (withInstructions) {
+                    const instructionsRow = table.insertRow();
+                    styleInstructionsRow(instructionsRow, participant, instructions);
+                }
+                const lineRow = table.insertRow();
+                styleLineRow(lineRow, participant, line);
+
+            }
+        }
+
+        function generateQSO() {
+
+            loadValues();
+
+            // If cqCallsign, cqName, or cqQTH are blank, alert the user
+            if (cqCallsign === "" || cqName === "" || cqQTH === "") {
+                alert("Please enter your callsign, name, and QTH.");
+                return;
+            }
+
+            fillProtocolTable(document.getElementById("qsoType").value);
+        }
+
+        // Load our data files on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            fetch('assets/first_names.txt')
+                .then(response => response.text())
+                .then(data => firstNames = data.split('\n'));
+            fetch('assets/us_cities.txt')
+                .then(response => response.text())
+                .then(data => usCities = data.split('\n'));
+        });
+
+        // Load all protocols on page load
+        let allProtocols;
+        window.addEventListener('DOMContentLoaded', async () => {
+            allProtocols = await loadProtocols();
+        });
+
+
+
+
+    </script>

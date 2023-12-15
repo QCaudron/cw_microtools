@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>K7DRQ</title>
+  <title>Word Generator - K7DRQ</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
     integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
@@ -286,21 +286,10 @@
 
     function loadWords() {
       var selectedList = document.getElementById('wordList').value;
-      var xhr = new XMLHttpRequest();
 
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-          wordList = xhr.responseText.split('\n');
-        }
-      };
-
-      if (selectedList === 'top1000') {
-        xhr.open('GET', 'assets/top1000.txt', true);
-      } else if (selectedList === 'top5000') {
-        xhr.open('GET', 'assets/top5000.txt', true);
-      }
-
-      xhr.send();
+      fetch('assets/' + selectedList + '.txt')
+        .then(response => response.text())
+        .then(text => wordList = text.split('\n'));
     }
 
     function toggleKey(key) {

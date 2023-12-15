@@ -1,0 +1,50 @@
+{
+    "Participant": [
+        "CQ",
+        "CALLER",
+        "CQ",
+        "CQ",
+        "CQ",
+        "CQ",
+        "CQ",
+        "CQ",
+        "CALLER",
+        "CALLER",
+        "CALLER",
+        "CALLER",
+        "CALLER",
+        "CALLER"
+    ],
+    "Instructions": [
+        "Call CQ.",
+        "Call <CQCALL>.",
+        "Respond to <CALLERCALL>.",
+        "Thank them for calling you.",
+        "Give them an RST report.",
+        "Tell them where you are.",
+        "Give them your name.",
+        "Pass it back to <CALLERCALL>.",
+        "Respond to <CQCALL>.",
+        "Thank them for the report.",
+        "Give them an RST report.",
+        "Tell them where you are.",
+        "Give them your name.",
+        "Pass it back to <CQCALL>."
+    ],
+    "Lines": [
+        "CQ CQ DE <CQCALL> <CQCALL> K",
+        "<CQCALL> DE <CALLERCALL> <CALLERCALL> K",
+        "<CALLERCALL> DE <CQCALL>",
+        "<GREETING> ES TNX FER CALL",
+        "UR RST <CQRST> <CQRST>",
+        "QTH <CQQTH>",
+        "NAME <CQNAME> <CQNAME>",
+        "OK HW? <span style='text-decoration: overline'>AR</span> <CALLERCALL> DE <CQCALL> K",
+        "<CQCALL> DE <CALLERCALL>",
+        "<GREETING> ES TNX FER RPRT",
+        "UR RST <CALLERRST> <CALLERRST>",
+        "QTH <CALLERQTH>",
+        "NAME <CALLERNAME> <CALLERNAME>",
+        "OK HW? <span style='text-decoration: overline'>AR</span> <CQCALL> DE <CALLERCALL> K"
+    ]
+}

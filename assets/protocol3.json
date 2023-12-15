@@ -1,0 +1,38 @@
+{
+    "Participant": [
+        "CQ",
+        "CQ",
+        "CQ",
+        "CQ",
+        "CQ",
+        "CALLER",
+        "CALLER",
+        "CALLER",
+        "CALLER",
+        "CALLER"
+    ],
+    "Instructions": [
+        "Tell <CALLERNAME> you copied everything.",
+        "Tell them about your ham career.",
+        "Tell them your age.",
+        "Tell them about your job.",
+        "Hand it back to <CALLERCALL>.",
+        "Tell <CQNAME> you copied everything.",
+        "Tell them about your ham career.",
+        "Tell them your age.",
+        "Tell them about your job.",
+        "Hand it back to <CQCALL>."
+    ],
+    "Lines": [
+        "OK <CALLERNAME> GUD CPY",
+        "BEEN HAM <CQHAMTIME> YRS",
+        "AGE HR <CQAGE> YRS",
+        "WRK AS A <CQOCCUPATION>",
+        "OK <CALLERNAME> HW CPY? <span style='text-decoration: overline'>AR</span> <CALLERCALL> DE <CQCALL> K",
+        "OK <CQNAME> GUD CPY",
+        "BEEN HAM <CALLERHAMTIME> YRS",
+        "AGE HR <CALLERAGE> YRS",
+        "WRK AS A <CALLEROCCUPATION>",
+        "OK <CQNAME> HW CPY? <span style='text-decoration: overline'>AR</span> <CQCALL> DE <CALLERCALL> K"
+    ]
+}
