@@ -11,7 +11,7 @@
         gtag('config', 'G-3PJ6GY6YYD');
     </script>
 
-    <title>LICW QSO Protocol - K7DRQ</title>
+    <title>Contest QSO Protocol - K7DRQ</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
         integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
@@ -31,7 +31,7 @@
 
 <body>
     <div class="container">
-        <h1>LICW QSO Protocol Generator</h1>
+        <h1>Contest QSO Generator</h1>
         <p class="subtitle">Part of the <a href="https://quentincaudron.com/cw_microtools/">CW Microtools
                 collection</a>.</p>
 
@@ -50,14 +50,14 @@
                     </div>
                     <div class="pure-u-1 pure-u-md-1-2">
                         <input type="text" id="theirCall" class="pure-u-23-24" placeholder="Their callsign"
-                            tabindex="4" />
+                            tabindex="5" />
                     </div>
                     <div class="pure-u-1 pure-u-md-1-2">
                         <input type="text" id="yourName" class="pure-u-23-24" placeholder="* Your name" tabindex="2"
                             required />
                     </div>
                     <div class="pure-u-1 pure-u-md-1-2">
-                        <input type="text" id="theirName" class="pure-u-23-24" placeholder="Their name" tabindex="5" />
+                        <input type="text" id="theirName" class="pure-u-23-24" placeholder="Their name" tabindex="6" />
                     </div>
                     <div class="pure-u-1 pure-u-md-1-2">
                         <input type="text" id="yourQTH" class="pure-u-23-24" placeholder="* Your QTH" tabindex="3"
@@ -66,16 +66,21 @@
                     <div class="pure-u-1 pure-u-md-1-2">
                         <input type="text" id="theirQTH" class="pure-u-23-24" placeholder="Their QTH" tabindex="6" />
                     </div>
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <input type="text" id="yourNumber" class="pure-u-23-24" placeholder="Your Number"
+                            tabindex="4" />
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <input type="text" id="theirNumber" class="pure-u-23-24" placeholder="Their Number"
+                            tabindex="8" />
+                    </div>
                 </div>
                 <hr />
                 <div class="pure-g controls" style="margin: 1rem">
                     <select id="qsoType" name="qsoType">
-                        <option value="protocol1">Protocol 1</option>
-                        <option value="protocol2">Protocol 2</option>
-                        <option value="protocol3">Protocol 3</option>
-                        <option value="protocol4">Protocol 4</option>
-                        <option value="minimalQSO">Minimal QSO</option>
-                        <option value="fullQSO">Full QSO</option>
+                        <option value="licw_challenge">LICW Challenge</option>
+                        <option value="skcc_wes">SKCC WES</option>
+                        <option value="k1usn_sst">K1USN SST</option>
                     </select>
                     <label for="includeInstructions" style="padding-left: 10px">
                         <input type="checkbox" id="includeInstructions">with instructions
@@ -104,28 +109,16 @@
             cqCallsign = document.getElementById("yourCall").value;
             cqName = document.getElementById("yourName").value;
             cqQTH = document.getElementById("yourQTH").value;
-            cqWX = WX[Math.floor(Math.random() * WX.length)];
-            cqTemp = Math.floor(Math.random() * 40) + 40;
-            cqRig = rigs[Math.floor(Math.random() * rigs.length)];
-            cqAnt = antennas[Math.floor(Math.random() * antennas.length)];
-            cqPower = powers[Math.floor(Math.random() * powers.length)];
-            cqHeight = heights[Math.floor(Math.random() * heights.length)];
-            cqAge = Math.floor(Math.random() * 60) + 20;
-            cqOccupation = occupations[Math.floor(Math.random() * occupations.length)];
-            cqHamTime = Math.floor(Math.random() * (cqAge - 15 - 3 + 1)) + 3;
+            cqNumber = document.getElementById("yourNumber").value;
+            // Number is optional here
+            if (cqNumber === "") {
+                cqNumber = Math.floor(Math.random() * 10000) + 100;
+            }
 
             callerCallsign = document.getElementById("theirCall").value;
             callerName = document.getElementById("theirName").value;
             callerQTH = document.getElementById("theirQTH").value;
-            callerWX = WX[Math.floor(Math.random() * WX.length)];
-            callerTemp = Math.floor(Math.random() * 40) + 40;
-            callerRig = rigs[Math.floor(Math.random() * rigs.length)];
-            callerAnt = antennas[Math.floor(Math.random() * antennas.length)];
-            callerPower = powers[Math.floor(Math.random() * powers.length)];
-            callerHeight = heights[Math.floor(Math.random() * heights.length)];
-            callerAge = Math.floor(Math.random() * 60) + 20;
-            callerOccupation = occupations[Math.floor(Math.random() * occupations.length)];
-            callerHamTime = Math.floor(Math.random() * (callerAge - 15 - 3 + 1)) + 3;
+            callerNumber = document.getElementById("theirNumber").value;
 
             withInstructions = document.getElementById("includeInstructions").checked;
 
@@ -136,7 +129,10 @@
                 callerName = firstNames[Math.floor(Math.random() * firstNames.length)];
             }
             if (callerQTH === "") {
-                callerQTH = usCities[Math.floor(Math.random() * usCities.length)];
+                callerQTH = usStates[Math.floor(Math.random() * usStates.length)];
+            }
+            if (callerNumber === "") {
+                callerNumber = Math.floor(Math.random() * 10000) + 100;
             }
 
             greeting = greetings[Math.floor(Math.random() * greetings.length)];
@@ -158,31 +154,13 @@
                         .replace(/<CQNAME>/g, cqName)
                         .replace(/<CQQTH>/g, cqQTH)
                         .replace(/<CQRST>/g, cqRST)
-                        .replace(/<CQRIG>/g, cqRig)
-                        .replace(/<CQANT>/g, cqAnt)
-                        .replace(/<CQPWR>/g, cqPower)
-                        .replace(/<CQHEIGHT>/g, cqHeight)
-                        .replace(/<CQWX>/g, cqWX)
-                        .replace(/<CQTEMP>/g, cqTemp)
-                        .replace(/<CQHEIGHT>/g, cqHeight)
-                        .replace(/<CQAGE>/g, cqAge)
-                        .replace(/<CQHAMTIME>/g, cqHamTime)
-                        .replace(/<CQOCCUPATION>/g, cqOccupation)
+                        .replace(/<CQNUMBER>/g, cqNumber)
 
                         .replace(/<CALLERCALL>/g, callerCallsign)
                         .replace(/<CALLERNAME>/g, callerName)
                         .replace(/<CALLERQTH>/g, callerQTH)
                         .replace(/<CALLERRST>/g, callerRST)
-                        .replace(/<CALLERRIG>/g, callerRig)
-                        .replace(/<CALLERANT>/g, callerAnt)
-                        .replace(/<CALLERPWR>/g, callerPower)
-                        .replace(/<CALLERHEIGHT>/g, callerHeight)
-                        .replace(/<CALLERWX>/g, callerWX)
-                        .replace(/<CALLERTEMP>/g, callerTemp)
-                        .replace(/<CALLERHEIGHT>/g, callerHeight)
-                        .replace(/<CALLERAGE>/g, callerAge)
-                        .replace(/<CALLERHAMTIME>/g, callerHamTime)
-                        .replace(/<CALLEROCCUPATION>/g, callerOccupation)
+                        .replace(/<CALLERNUMBER>/g, callerNumber)
 
                         .replace(/<GREETING>/g, greeting)
 
@@ -226,9 +204,9 @@
         // Load all data on page load
         let allProtocols;
         window.addEventListener('DOMContentLoaded', async () => {
-            allProtocols = await loadProtocols();
+            allProtocols = await loadContestProtocols();
             firstNames = await loadNames();
-            usCities = await loadCities();
+            usStates = await loadStates();
         });
 
     </script>

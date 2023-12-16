@@ -1,0 +1,60 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.qsoTable {
+    border-collapse: separate;
+    border-spacing: 2rem 0;
+    padding-bottom: 3rem;
+}
+
+.qsoTable .lineRow {
+    font-weight: 600;
+    font-size: 1.25rem;
+    border-spacing: 0 4rem;
+}
+
+.qsoTable .lineRowCQ {
+    color: #8B0000;
+}
+
+.qsoTable .lineRowCaller {
+    color: #006400;
+}
+
+.qsoTable .instructionsRow {
+    font-size: 0.8rem;
+}
+
+.controls {
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    margin-right: 10px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.subtitle {
+    text-align: center;
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+    color: gray;
+}

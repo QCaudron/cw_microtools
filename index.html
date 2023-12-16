@@ -8,7 +8,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-3PJ6GY6YYD');
     </script>
 
@@ -17,21 +16,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
         integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="k7drq_styles.css" />
+
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* height: 100vh; */
-            margin: 0;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
         .microtoolsList {
             display: flex;
             flex-direction: column;
@@ -51,16 +38,6 @@
             font-weight: bold;
             margin-bottom: 0.5rem;
         }
-
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: #f1f1f1;
-            text-align: center;
-            padding: 10px 0;
-        }
     </style>
 </head>
 
@@ -78,6 +55,10 @@
             <div class="microtoolsItem">
                 <a href="protocol_qso_generator.html" class="appItem">LICW QSO Protocol Generator</a>
                 Work through the LICW QSO Protocol.
+            </div>
+            <div class="microtoolsItem">
+                <a href="contest_qso_generator.html" class="appItem">Contest Protocol Generator</a>
+                Run the LICW Challenge, the SKCC WES, or the K1USN SST.
             </div>
         </div>
 

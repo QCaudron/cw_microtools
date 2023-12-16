@@ -1,0 +1,23 @@
+{
+    "Participant": [
+        "CQ",
+        "CALLER",
+        "CQ",
+        "CALLER",
+        "CQ"
+    ],
+    "Instructions": [
+        "Call CQ.",
+        "Answer the station calling CQ.",
+        "Give <CALLERCALL> your info.",
+        "Give <CQCALL> your info.",
+        "Wish them luck and wait for the next caller."
+    ],
+    "Lines": [
+        "CQ SST <CQCALL>",
+        "<CALLERCALL>",
+        "<GREETING> <CALLERCALL> <CQNAME> <CQQTH>",
+        "<GREETING> <CQNAME> <CALLERNAME> <CALLERQTH>",
+        "GL <CALLERNAME> <CQCALL> SST"
+    ]
+}
