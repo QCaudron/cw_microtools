@@ -29,7 +29,7 @@
         "Give them your SKCC number and pass it back.",
         "Thank <CALLERNAME> and wish them luck.",
         "Hand it back to <CALLERCALL> and close out the contact.",
-        "Thank <CQCALL> and wish them luck.",
+        "Thank <CQNAME> and wish them luck.",
         "Close out the contact and give <CQCALL> a dit dit.",
         "Dit dit."
     ],
@@ -46,7 +46,7 @@
         "SKCC NR <CALLERNUMBER> <CALLERNUMBER> BK",
         "BK RR TNX <CALLERNAME> 73 ES GL",
         "<CALLERCALL> DE <CQCALL> <span style='text-decoration: overline'>SK</span>",
-        "<CQCALL> DE <CALLERCALL> TNX ES GL",
+        "<CQCALL> DE <CALLERCALL> TNX <CQNAME> ES GL",
         "73 <CQCALL> DE <CALLERCALL> <span style='text-decoration: overline'>SK</span> E E",
         "E E"
     ]
