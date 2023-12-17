@@ -181,10 +181,13 @@
             const table = document.getElementById('qsoTable');
             table.innerHTML = '';
 
+            const ar = " <span style='text-decoration: overline'>AR</span>".toUpperCase();
+
             // Loop through the data to create table rows
             for (let i = 0; i < allProtocols[protocol]["Participant"].length; i++) {
+
                 const participant = allProtocols[protocol].Participant[i];
-                const line = (
+                var line = (
                     allProtocols[protocol].Lines[i]
                         .replace(/<CQCALL>/g, cqCallsign)
                         .replace(/<CQNAME>/g, cqName)
@@ -220,6 +223,11 @@
 
                         .toUpperCase()
                 );
+                // In Minimal and Full protocols, remove <AR>
+                if (protocol === "minimalQSO" || protocol === "fullQSO") {
+                    line = line.replace(ar, "");
+                }
+
                 const instructions = (
                     allProtocols[protocol].Instructions[i]
                         .replace(/<CQCALL>/g, cqCallsign)
