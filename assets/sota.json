@@ -10,8 +10,8 @@
         "Call CQ.",
         "Answer <CQCALL>'s CQ.",
         "Give <CALLERCALL> an RST.",
-        "Give <CQCALL> an RST and your SPC.",
-        "Wish <CALLERNAME> luck and wait for the next caller."
+        "Give <CALLERCALL> an RST and your SPC.",
+        "Thank <CALLERCALL> and wait for the next caller."
     ],
     "Lines": [
         "CQ SOTA DE <CQCALL> <CQCALL> K",
