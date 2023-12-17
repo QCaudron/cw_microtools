@@ -153,7 +153,8 @@ async function loadContestProtocols() {
     const protocolFiles = [
         "assets/licw_challenge.json",
         "assets/skcc_wes.json",
-        "assets/k1usn_sst.json"
+        "assets/k1usn_sst.json",
+        "assets/sota.json"
     ];
 
     try {
