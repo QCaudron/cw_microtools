@@ -8,7 +8,7 @@
     ],
     "Instructions": [
         "Call CQ.",
-        "Answer the station calling CQ.",
+        "Answer <CQCALL>'s CQ.",
         "Give <CALLERCALL> your info.",
         "Give <CQCALL> your info.",
         "Wish <CALLERNAME> luck and wait for the next caller."
