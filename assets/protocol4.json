@@ -8,10 +8,10 @@
         "CALLER"
     ],
     "Instructions": [
-        "Thank them for the QSO.",
-        "Wish them well and sign off.",
-        "Thank them for the QSO.",
-        "Wish them well and sign off.",
+        "Thank <CALLERNAME> for the QSO.",
+        "Wish <CALLERCALL> well and sign off.",
+        "Thank <CQNAME> for the QSO.",
+        "Wish <CQCALL> well and sign off.",
         "Dit dit.",
         "Dit dit."
     ],

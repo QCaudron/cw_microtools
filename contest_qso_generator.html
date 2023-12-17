@@ -168,9 +168,9 @@
                 );
                 const instructions = (
                     allProtocols[protocol].Instructions[i]
-                        .replace(/<CQCALL>/g, cqCallsign)
+                        .replace(/<CQCALL>/g, cqCallsign.toUpperCase())
                         .replace(/<CQNAME>/g, cqName)
-                        .replace(/<CALLERCALL>/g, callerCallsign)
+                        .replace(/<CALLERCALL>/g, callerCallsign.toUpperCase())
                         .replace(/<CALLERNAME>/g, callerName)
                 );
 

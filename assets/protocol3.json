@@ -27,12 +27,12 @@
         "OK <CALLERNAME> GUD CPY",
         "BEEN HAM <CQHAMTIME> YRS",
         "AGE HR <CQAGE> YRS",
-        "WRK AS A <CQOCCUPATION>",
+        "WRK AS <CQOCCUPATION>",
         "OK <CALLERNAME> HW CPY? <span style='text-decoration: overline'>AR</span> <CALLERCALL> DE <CQCALL> K",
         "OK <CQNAME> GUD CPY",
         "BEEN HAM <CALLERHAMTIME> YRS",
         "AGE HR <CALLERAGE> YRS",
-        "WRK AS A <CALLEROCCUPATION>",
+        "WRK AS <CALLEROCCUPATION>",
         "OK <CQNAME> HW CPY? <span style='text-decoration: overline'>AR</span> <CQCALL> DE <CALLERCALL> K"
     ]
 }
