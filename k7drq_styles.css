@@ -58,3 +58,37 @@ body {
     margin-bottom: 2rem;
     color: gray;
 }
+
+.text-inputs {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+}
+
+.text-inputs label {
+    margin-right: 10px;
+}
+
+.text-inputs input[type="number"] {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 60px;
+    margin-right: 10px;
+}
+
+.dropdown-select {
+    margin-right: 10px;
+}
+
+.button-go {
+    background: rgb(28, 184, 65);
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    font-size: 125%;
+}

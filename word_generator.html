@@ -61,40 +61,6 @@
       margin-bottom: 1rem;
     }
 
-    .text-inputs {
-      display: flex;
-      align-items: center;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      justify-content: center;
-    }
-
-    .text-inputs label {
-      margin-right: 10px;
-    }
-
-    .text-inputs input[type="number"] {
-      display: flex;
-      align-items: center;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      width: 60px;
-      margin-right: 10px;
-    }
-
-    .dropdown-select {
-      margin-right: 10px;
-    }
-
-    .button-go {
-      background: rgb(28, 184, 65);
-      color: white;
-      border-radius: 4px;
-      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-      font-size: 125%;
-    }
-
     .result-list {
       display: flex;
       justify-content: center;
@@ -108,7 +74,7 @@
   <div class="container">
 
     <h1>K7DRQ Word Generator</h1>
-    <p class="subtitle">Part of the <a href="https://quentincaudron.com/cw_microtools/">CW Microtools
+    <p class="subtitle">Part of the <a href="..">CW Microtools
         collection</a>.</p>
 
     <form id="wordForm" class="pure-form">
@@ -237,12 +203,20 @@
       </div>
 
       <div class="button-row">
+        <label>BC1 :</label>
         <button class="pure-button" type="button" onclick="selectSubset('REA')">REA</button>
         <button class="pure-button" type="button" onclick="selectSubset('TIN')">TIN</button>
         <button class="pure-button" type="button" onclick="selectSubset('PSG')">PSG</button>
         <button class="pure-button" type="button" onclick="selectSubset('LCD')">LCD</button>
         <button class="pure-button" type="button" onclick="selectSubset('HOF')">HOF</button>
         <button class="pure-button" type="button" onclick="selectSubset('UWB')">UWB</button>
+      </div>
+
+      <div class="button-row">
+        <label>BC2 :</label>
+        <button class="pure-button" type="button" onclick="selectSubset('KMY')">KMY</button>
+        <button class="pure-button" type="button" onclick="selectSubset('QXV')">QXV</button>
+        <button class="pure-button" type="button" onclick="selectSubset('ZJ')">ZJ</button>
       </div>
 
       <hr style="margin-top: 2rem; margin-bottom: 2rem;" />
@@ -283,7 +257,7 @@
   </div>
 
   <footer class="footer">
-    K7DRQ's <a href="https://quentincaudron.com/cw_microtools">CW Microtools</a>
+    K7DRQ's <a href="..">CW Microtools</a>
   </footer>
 
   <script>
@@ -317,6 +291,9 @@
       var LCD = ['L', 'C', 'D', 'P', 'S', 'G'];
       var HOF = ['H', 'O', 'F', 'L', 'C', 'D'];
       var UWB = ['U', 'W', 'B', 'H', 'O', 'F'];
+      var KMY = ['K', 'M', 'Y'];
+      var QXV = ['Q', 'X', 'V'];
+      var ZJ = ['Z', 'J'];
 
       if (subset === 'BC1') {
         var subsetWords = allBC1;
@@ -338,6 +315,15 @@
       }
       if (subset === 'UWB') {
         var subsetWords = UWB;
+      }
+      if (subset === 'KMY') {
+        var subsetWords = KMY.concat(allBC1);
+      }
+      if (subset === 'QXV') {
+        var subsetWords = QXV.concat(allBC1);
+      }
+      if (subset === 'ZJ') {
+        var subsetWords = ZJ.concat(allBC1);
       }
 
       selectNone()

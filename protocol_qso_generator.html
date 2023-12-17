@@ -32,7 +32,7 @@
 <body>
     <div class="container">
         <h1>LICW QSO Protocol Generator</h1>
-        <p class="subtitle">Part of the <a href="https://quentincaudron.com/cw_microtools/">CW Microtools
+        <p class="subtitle">Part of the <a href="..">CW Microtools
                 collection</a>.</p>
 
         <form class="pure-form pure-form-stacked" style="width: 60%">
@@ -67,31 +67,56 @@
                         <input type="text" id="theirQTH" class="pure-u-23-24" placeholder="Their QTH" tabindex="6" />
                     </div>
                 </div>
-                <hr />
-                <div class="pure-g controls" style="margin: 1rem">
-                    <select id="qsoType" name="qsoType">
-                        <option value="protocol1">Protocol 1</option>
-                        <option value="protocol2">Protocol 2</option>
-                        <option value="protocol3">Protocol 3</option>
-                        <option value="protocol4">Protocol 4</option>
-                        <option value="minimalQSO">Minimal QSO (P1 + P4)</option>
-                        <option value="fullQSO">Full QSO (all protocols)</option>
-                    </select>
-                    <label for="includeInstructions" style="padding-left: 10px">
-                        <input type="checkbox" id="includeInstructions">with instructions
-                    </label>
-                    <button type="button" class="pure-button pure-button-primary" style="margin-left: 1rem"
-                        onclick='generateQSO()'>Generate</button>
-                </div>
 
+                <hr />
             </fieldset>
+        </form>
+
+        <br />
+
+        <form class="pure-form pure-form-aligned">
+
+            <div class="pure-control-group">
+                <label for="qsoType">Let's do</label>
+                <select id="qsoType" name="qsoType">
+                    <option value="protocol1">Protocol 1</option>
+                    <option value="protocol2">Protocol 2</option>
+                    <option value="protocol3">Protocol 3</option>
+                    <option value="protocol4">Protocol 4</option>
+                    <option value="minimalQSO">Minimal QSO (P1 + P4)</option>
+                    <option value="fullQSO">Full QSO (all protocols)</option>
+                </select>
+            </div>
+            <div class="pure-control-group">
+                <label for="leading">with me</label>
+                <select id="leading" name="leading">
+                    <option value="me">leading</option>
+                    <option value="other">answering</option>
+                </select>
+            </div>
+            <div class="pure-control-group">
+                <label></label>
+                <label for="includeInstructions" style="text-align: left;">
+                    <input type="checkbox" id="includeInstructions" style="margin-left: 0px; margin-right: 10px">
+                    with instructions
+                </label>
+            </div>
+
+            <br />
+
+            <div style="display: flex; justify-content: center; padding-bottom: 2rem;">
+                <button type="button" class="button-go pure-button" onclick="generateQSO()">Generate
+                    QSO</button>
+            </div>
         </form>
 
         <table id="qsoTable" class="qsoTable"></table>
 
         <footer class="footer">
-            K7DRQ's <a href="https://quentincaudron.com/cw_microtools">CW Microtools</a>
+            K7DRQ's <a href="..">CW Microtools</a>
         </footer>
+
+        <br />
 
     </div>
 
@@ -128,6 +153,7 @@
             callerHamTime = Math.floor(Math.random() * (callerAge - 15 - 3 + 1)) + 3;
 
             withInstructions = document.getElementById("includeInstructions").checked;
+            leading = document.getElementById("leading").value;
 
             if (callerCallsign === "") {
                 callerCallsign = generateRandomUSCallsign();
@@ -142,6 +168,12 @@
             greeting = greetings[Math.floor(Math.random() * greetings.length)];
             cqRST = RSTs[Math.floor(Math.random() * RSTs.length)];
             callerRST = RSTs[Math.floor(Math.random() * RSTs.length)];
+
+            if (leading === "other") {
+                [cqCallsign, callerCallsign] = [callerCallsign, cqCallsign];
+                [cqName, callerName] = [callerName, cqName];
+                [cqQTH, callerQTH] = [callerQTH, cqQTH];
+            }
         }
 
 

@@ -32,7 +32,7 @@
 <body>
     <div class="container">
         <h1>Contest QSO Generator</h1>
-        <p class="subtitle">Part of the <a href="https://quentincaudron.com/cw_microtools/">CW Microtools
+        <p class="subtitle">Part of the <a href="..">CW Microtools
                 collection</a>.</p>
 
         <form class="pure-form pure-form-stacked" style="width: 60%">
@@ -76,26 +76,51 @@
                     </div>
                 </div>
                 <hr />
-                <div class="pure-g controls" style="margin: 1rem">
-                    <select id="qsoType" name="qsoType">
-                        <option value="licw_challenge">LICW Challenge</option>
-                        <option value="skcc_wes">SKCC WES</option>
-                        <option value="k1usn_sst">K1USN SST</option>
-                    </select>
-                    <label for="includeInstructions" style="padding-left: 10px">
-                        <input type="checkbox" id="includeInstructions">with instructions
-                    </label>
-                    <button type="button" class="pure-button pure-button-primary" style="margin-left: 1rem"
-                        onclick='generateQSO()'>Generate</button>
-                </div>
-
             </fieldset>
+        </form>
+
+        <br />
+
+        <form class="pure-form pure-form-aligned">
+
+            <div class="pure-control-group">
+                <label for="qsoType">I'm doing the</label>
+                <select id="qsoType" name="qsoType">
+                    <option value="licw_challenge">LICW Challenge</option>
+                    <option value="skcc_wes">SKCC WES</option>
+                    <option value="k1usn_sst">K1USN SST</option>
+                </select>
+            </div>
+            <div class="pure-control-group">
+                <label for="leading">with me</label>
+                <select id="leading" name="leading">
+                    <option value="me">leading</option>
+                    <option value="other">answering</option>
+                </select>
+            </div>
+            <div class="pure-control-group">
+                <label></label>
+                <label for="includeInstructions" style="text-align: left;">
+                    <input type="checkbox" id="includeInstructions" style="margin-left: 0px; margin-right: 10px">
+                    with instructions
+                </label>
+            </div>
+
+            <br />
+
+            <div style="display: flex; justify-content: center; padding-bottom: 2rem;">
+                <button type="button" class="button-go pure-button" onclick="generateQSO()">Generate
+                    QSO</button>
+            </div>
+        </form>
+
+        </fieldset>
         </form>
 
         <table id="qsoTable" class="qsoTable"></table>
 
         <footer class="footer">
-            K7DRQ's <a href="https://quentincaudron.com/cw_microtools">CW Microtools</a>
+            K7DRQ's <a href="..">CW Microtools</a>
         </footer>
 
     </div>
@@ -121,6 +146,7 @@
             callerNumber = document.getElementById("theirNumber").value;
 
             withInstructions = document.getElementById("includeInstructions").checked;
+            leading = document.getElementById("leading").value;
 
             if (callerCallsign === "") {
                 callerCallsign = generateRandomUSCallsign();
@@ -138,6 +164,12 @@
             greeting = greetings[Math.floor(Math.random() * greetings.length)];
             cqRST = RSTs[Math.floor(Math.random() * RSTs.length)];
             callerRST = RSTs[Math.floor(Math.random() * RSTs.length)];
+
+            if (leading === "other") {
+                [cqCallsign, callerCallsign] = [callerCallsign, cqCallsign];
+                [cqName, callerName] = [callerName, cqName];
+                [cqQTH, callerQTH] = [callerQTH, cqQTH];
+            }
         }
 
 
