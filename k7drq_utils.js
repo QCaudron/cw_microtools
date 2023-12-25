@@ -74,6 +74,23 @@ async function loadCities() {
 }
 
 
+// Load FD Sections
+async function loadFDSections() {
+    try {
+        const response = await fetch('assets/fd_sections.txt');
+        const data = await response.text();
+        const lines = data.split('\n');
+        const sections = lines.map(line => {
+            return line.split('\t')[1].trim();
+        });
+        return sections
+    } catch (error) {
+        console.error('Error fetching or processing fd_sections.txt:', error);
+    }
+}
+
+
+
 // Load only states from the US Cities file
 async function loadStates() {
     try {
@@ -154,7 +171,8 @@ async function loadContestProtocols() {
         "assets/licw_challenge.json",
         "assets/skcc_wes.json",
         "assets/k1usn_sst.json",
-        "assets/sota.json"
+        "assets/sota.json",
+        "assets/field_day.json",
     ];
 
     try {

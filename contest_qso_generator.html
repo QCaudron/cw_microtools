@@ -90,6 +90,7 @@
                     <option value="skcc_wes">SKCC WES</option>
                     <option value="k1usn_sst">K1USN SST</option>
                     <option value="sota">SOTA</option>
+                    <option value="field_day">Field Day</option>
                 </select>
             </div>
             <div class="pure-control-group">
@@ -140,11 +141,14 @@
             if (cqNumber === "") {
                 cqNumber = Math.floor(Math.random() * 10000) + 100;
             }
+            cqFDClass = generateFDClass();
 
             callerCallsign = document.getElementById("theirCall").value;
             callerName = document.getElementById("theirName").value;
             callerQTH = document.getElementById("theirQTH").value;
             callerNumber = document.getElementById("theirNumber").value;
+            callerFDSection = fdSections[Math.floor(Math.random() * fdSections.length)];
+            callerFDClass = generateFDClass();
 
             withInstructions = document.getElementById("includeInstructions").checked;
             leading = document.getElementById("leading").value;
@@ -174,6 +178,21 @@
         }
 
 
+        function generateFDClass() {
+            const designators = ["A", "B", "C", "D", "E", "F"];
+            const fdClassDesignator = designators[Math.floor(Math.random() * designators.length)];
+
+            const smallStations = ["B", "D", "E"];
+            if (smallStations.includes(fdClassDesignator)) {
+                var classSize = Math.floor(Math.random() * 2) + 1;
+            } else {
+                var classSize = Math.floor(Math.random() * 15) + 1;
+            }
+
+            return classSize + fdClassDesignator;
+        }
+
+
         function fillProtocolTable(protocol) {
             const table = document.getElementById('qsoTable');
             table.innerHTML = '';
@@ -188,12 +207,16 @@
                         .replace(/<CQQTH>/g, cqQTH)
                         .replace(/<CQRST>/g, cqRST)
                         .replace(/<CQNUMBER>/g, cqNumber)
+                        .replace(/<CQFDSEC>/g, cqQTH)
+                        .replace(/<CQFDCLASS>/g, cqFDClass)
 
                         .replace(/<CALLERCALL>/g, callerCallsign)
                         .replace(/<CALLERNAME>/g, callerName)
                         .replace(/<CALLERQTH>/g, callerQTH)
                         .replace(/<CALLERRST>/g, callerRST)
                         .replace(/<CALLERNUMBER>/g, callerNumber)
+                        .replace(/<CALLERFDSEC>/g, callerFDSection)
+                        .replace(/<CALLERFDCLASS>/g, callerFDClass)
 
                         .replace(/<GREETING>/g, greeting)
 
@@ -240,6 +263,7 @@
             allProtocols = await loadContestProtocols();
             firstNames = await loadNames();
             usStates = await loadStates();
+            fdSections = await loadFDSections();
         });
 
     </script>

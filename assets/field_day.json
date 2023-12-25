@@ -1,0 +1,23 @@
+{
+    "Participant": [
+        "CQ",
+        "CALLER",
+        "CQ",
+        "CALLER",
+        "CQ"
+    ],
+    "Instructions": [
+        "Call CQ.",
+        "Answer <CQCALL>'s CQ.",
+        "Give <CALLERCALL> your class and section.",
+        "Give <CQCALL> your class and section.",
+        "Thank <CALLERCALL> and wait for the next caller."
+    ],
+    "Lines": [
+        "CQ FD <CQCALL> <CQCALL> K",
+        "<CALLERCALL>",
+        "<CALLERCALL> TU <CQFDCLASS> <CQFDSEC>",
+        "<CQCALL> TNX <CALLERFDCLASS> <CALLERFDSEC>",
+        "TU <CQCALL> FD"
+    ]
+}
