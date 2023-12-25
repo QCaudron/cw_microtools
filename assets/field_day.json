@@ -17,7 +17,7 @@
         "CQ FD <CQCALL> <CQCALL> K",
         "<CALLERCALL>",
         "<CALLERCALL> TU <CQFDCLASS> <CQFDSEC>",
-        "<CQCALL> TNX <CALLERFDCLASS> <CALLERFDSEC>",
+        "RR TNX <CALLERFDCLASS> <CALLERFDSEC>",
         "TU <CQCALL> FD"
     ]
 }
