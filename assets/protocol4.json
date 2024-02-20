@@ -4,23 +4,20 @@
         "CQ",
         "CALLER",
         "CALLER",
-        "CQ",
-        "CALLER"
+        "CQ"
     ],
     "Instructions": [
         "Thank <CALLERNAME> for the QSO.",
         "Wish <CALLERCALL> well and sign off.",
         "Thank <CQNAME> for the QSO.",
         "Wish <CQCALL> well and sign off.",
-        "Dit dit.",
         "Dit dit."
     ],
     "Lines": [
         "OK <CALLERNAME> TNX FER FB QSO ES HP CUAGN",
         "73 <span style='text-decoration: overline'>AR</span> <CALLERCALL> DE <CQCALL> <span style='text-decoration: overline'>SK</span>",
         "OK <CQNAME> TNX FER QSO ES HP CUAGN",
-        "73 <span style='text-decoration: overline'>AR</span> <CQCALL> DE <CALLERCALL> <span style='text-decoration: overline'>SK</span>",
-        "E E",
+        "73 <span style='text-decoration: overline'>AR</span> <CQCALL> DE <CALLERCALL> <span style='text-decoration: overline'>SK</span> E E",
         "E E"
     ]
 }
