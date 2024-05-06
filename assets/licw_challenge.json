@@ -18,8 +18,7 @@
         "CQ",
         "CALLER",
         "CALLER",
-        "CQ",
-        "CALLER"
+        "CQ"
     ],
     "Instructions": [
         "Call CQ.",
@@ -40,7 +39,6 @@
         "Wish <CALLERCALL> luck in the challenge.",
         "Thank <CQCALL> for the exchange.",
         "Wish <CQCALL> luck in the challenge.",
-        "Dit dit.",
         "Dit dit."
     ],
     "Lines": [
@@ -61,8 +59,7 @@
         "<CALLERCALL> DE <CQCALL> TNX <CALLERNAME> FER QSO",
         "GL ES 73 <CALLERCALL> DE <CQCALL> <span style='text-decoration: overline'>SK</span>",
         "<CQCALL> DE <CALLERCALL> TNX <CQNAME> FER QSO",
-        "GL ES 73 <CQCALL> DE <CALLERCALL> <span style='text-decoration: overline'>SK</span>",
-        "E E",
+        "GL ES 73 <CQCALL> DE <CALLERCALL> <span style='text-decoration: overline'>SK</span> E E",
         "E E"
     ]
 }

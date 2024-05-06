@@ -227,3 +227,41 @@ function styleInstructionsRow(row, participant, instructions) {
         row.insertCell().textContent = instructions;
     }
 }
+
+
+// "Thin" out some text by eliminating characters randomly
+function diminishText(text, probability) {
+    let newText = "";
+    for (let i = 0; i < text.length; i++) {
+
+        // Don't remove spaces but triple them for space
+        if (text[i] === " ") {
+            newText += "&nbsp;&nbsp;&nbsp;";
+            continue;
+        }
+
+        // If it's a "<", there's an HTML tag coming, so skip ahead to the next ">"
+        if (text[i] === "<") {
+            while (text[i] !== ">") {
+                newText += text[i];
+                i++;
+            }
+            newText += text[i];
+            continue;
+        }
+
+        // If it's a character that's not a space, remove it with a certain probability
+        else {
+            if (Math.random() > probability) {
+                newText += text[i];
+            }
+            else {
+                newText += "_";
+            }
+        }
+
+        // Space things out when we remove characters for ease of reading
+        newText += " ";
+    }
+    return newText;
+}

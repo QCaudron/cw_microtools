@@ -17,6 +17,10 @@ body {
     padding-bottom: 3rem;
 }
 
+.qsoTable td {
+    padding-bottom: 1rem;
+}
+
 .qsoTable .lineRow {
     font-weight: 600;
     font-size: 1.25rem;

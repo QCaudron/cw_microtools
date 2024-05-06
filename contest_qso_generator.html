@@ -107,6 +107,11 @@
                     with instructions
                 </label>
             </div>
+            <div class="pure-control-group">
+                <label for="diminish" class="slider-label">with diminished cues</label>
+                <input type="range" min="0" max="30" step="5" value="0" class="slider" id="diminish">
+                <span class="slider-value" id="slider-value">0 %</span>
+            </div>
 
             <br />
 
@@ -201,7 +206,7 @@
             // Loop through the data to create table rows
             for (let i = 0; i < allProtocols[protocol]["Participant"].length; i++) {
                 const participant = allProtocols[protocol].Participant[i];
-                const line = (
+                var line = (
                     allProtocols[protocol].Lines[i]
                         .replace(/<CQCALL>/g, cqCallsign)
                         .replace(/<CQNAME>/g, cqName)
@@ -223,6 +228,12 @@
 
                         .toUpperCase()
                 );
+
+                // Diminish the text if the slider is not at 0
+                if (document.getElementById("diminish").value > 0) {
+                    line = diminishText(line, document.getElementById("diminish").value / 100);
+                }
+
                 const instructions = (
                     allProtocols[protocol].Instructions[i]
                         .replace(/<CQCALL>/g, cqCallsign.toUpperCase())
@@ -265,6 +276,15 @@
             firstNames = await loadNames();
             usStates = await loadStates();
             fdSections = await loadFDSections();
+        });
+
+
+        // Event listener for the slider
+        const slider = document.getElementById('diminish');
+        const sliderValueDisplay = document.getElementById('slider-value');
+        slider.addEventListener('input', function () {
+            // Update the value display when slider value changes
+            sliderValueDisplay.textContent = slider.value + ' %';
         });
 
     </script>

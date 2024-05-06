@@ -101,6 +101,11 @@
                     with instructions
                 </label>
             </div>
+            <div class="pure-control-group">
+                <label for="diminish" class="slider-label">with diminished cues</label>
+                <input type="range" min="0" max="30" step="5" value="0" class="slider" id="diminish">
+                <span class="slider-value" id="slider-value">0 %</span>
+            </div>
 
             <br />
 
@@ -124,9 +129,11 @@
     <script src="k7drq_utils.js"></script>
     <script>
 
+
+
         // Load QSO variables from the form
         function loadValues() {
-            cqCallsign = document.getElementById("yourCall").value;
+            cqCallsign = document.getElementById("yourCall").value.toUpperCase();
             cqName = document.getElementById("yourName").value;
             cqQTH = document.getElementById("yourQTH").value;
             cqWX = WX[Math.floor(Math.random() * WX.length)];
@@ -139,7 +146,7 @@
             cqOccupation = occupations[Math.floor(Math.random() * occupations.length)];
             cqHamTime = Math.floor(Math.random() * (cqAge - 15 - 3 + 1)) + 3;
 
-            callerCallsign = document.getElementById("theirCall").value;
+            callerCallsign = document.getElementById("theirCall").value.toUpperCase();
             callerName = document.getElementById("theirName").value;
             callerQTH = document.getElementById("theirQTH").value;
             callerWX = WX[Math.floor(Math.random() * WX.length)];
@@ -228,6 +235,11 @@
                     line = line.replace(ar, "");
                 }
 
+                // Diminish the text if the slider is not at 0
+                if (document.getElementById("diminish").value > 0) {
+                    line = diminishText(line, document.getElementById("diminish").value / 100);
+                }
+
                 const instructions = (
                     allProtocols[protocol].Instructions[i]
                         .replace(/<CQCALL>/g, cqCallsign)
@@ -269,6 +281,14 @@
             allProtocols = await loadProtocols();
             firstNames = await loadNames();
             usCities = await loadCities();
+        });
+
+        // Event listener for the slider
+        const slider = document.getElementById('diminish');
+        const sliderValueDisplay = document.getElementById('slider-value');
+        slider.addEventListener('input', function () {
+            // Update the value display when slider value changes
+            sliderValueDisplay.textContent = slider.value + ' %';
         });
 
     </script>
