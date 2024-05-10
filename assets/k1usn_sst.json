@@ -4,6 +4,7 @@
         "CALLER",
         "CQ",
         "CALLER",
+        "CQ",
         "CQ"
     ],
     "Instructions": [
@@ -11,13 +12,15 @@
         "Answer <CQCALL>'s CQ.",
         "Give <CALLERCALL> your info.",
         "Give <CQCALL> your info.",
-        "Wish <CALLERNAME> luck and wait for the next caller."
+        "Wish <CALLERNAME> luck.",
+        "Wait for the next caller."
     ],
     "Lines": [
-        "CQ SST <CQCALL>",
+        "CQ SST DE <CQCALL> K",
         "<CALLERCALL>",
         "<GREETING> <CALLERCALL> <CQNAME> <CQQTH>",
         "<GREETING> <CQNAME> <CALLERNAME> <CALLERQTH>",
-        "GL <CALLERNAME> <CQCALL> SST"
+        "GL <CALLERNAME> TU",
+        "<CQCALL> SST"
     ]
 }

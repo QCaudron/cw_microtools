@@ -3,21 +3,27 @@
         "CQ",
         "CALLER",
         "CQ",
+        "CQ",
         "CALLER",
-        "CQ"
+        "CQ",
+        "CALLER"
     ],
     "Instructions": [
         "Call CQ.",
         "Answer <CQCALL>'s CQ.",
-        "Give <CALLERCALL> an RST.",
-        "Give <CQCALL> an RST and your SPC.",
-        "Thank <CALLERCALL> and wait for the next caller."
+        "Thank <CALLERCALL> for the call.",
+        "Give <CQCALL> your RST.",
+        "Confirm <CQCALL>'s report and give them your RST and QTH.",
+        "Thank <CALLERCALL>.",
+        "Dit dit."
     ],
     "Lines": [
-        "CQ SOTA DE <CQCALL> <CQCALL> K",
+        "CQ CQ SOTA DE <CQCALL> <CQCALL> K",
         "<CALLERCALL>",
-        "<CALLERCALL> TNX <CQRST> <CQRST> BK",
-        "BK TU <CALLERRST> <CALLERRST> <CALLERQTH> <CALLERQTH> BK",
-        "BK TU 73 <CQCALL> SOTA K"
+        "<CALLERCALL> TU",
+        "<CQRST> <CQRST> BK",
+        "BK RR <CALLERRST> <CALLERRST> <CALLERQTH> BK",
+        "BK RR TU 73 E E",
+        "E E"
     ]
 }

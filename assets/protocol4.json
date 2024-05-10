@@ -15,9 +15,9 @@
     ],
     "Lines": [
         "OK <CALLERNAME> TNX FER FB QSO ES HP CUAGN",
-        "73 <span style='text-decoration: overline'>AR</span> <CALLERCALL> DE <CQCALL> <span style='text-decoration: overline'>SK</span>",
+        "73 <span style='text-decoration: overline'>AR</span> <CALLERCALL> DE <CQCALL> TU <span style='text-decoration: overline'>SK</span>",
         "OK <CQNAME> TNX FER QSO ES HP CUAGN",
-        "73 <span style='text-decoration: overline'>AR</span> <CQCALL> DE <CALLERCALL> <span style='text-decoration: overline'>SK</span> E E",
+        "73 <span style='text-decoration: overline'>AR</span> <CQCALL> DE <CALLERCALL> TU <span style='text-decoration: overline'>SK</span> E E",
         "E E"
     ]
 }
