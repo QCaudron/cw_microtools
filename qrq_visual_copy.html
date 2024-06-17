@@ -70,8 +70,8 @@
       </div>
       <div class="pure-control-group">
         <label for="reveal" class="slider-label">Reveal word after</label>
-        <input type="range" min="0.5" max="5" step="0.5" value="2" class="slider" id="reveal">
-        &nbsp;<span class="slider-value" id="revealValue">2</span> s
+        <input type="range" min="500" max="3000" step="100" value="2000" class="slider" id="reveal">
+        &nbsp;<span class="slider-value" id="revealValue">2000</span> ms
       </div>
 
       <div class="text-inputs">
@@ -162,7 +162,7 @@
         var maxChars = parseInt(document.getElementById('maxChars').value);
         var charDuration = parseInt(document.getElementById('charDuration').value);
         var charSpace = parseInt(document.getElementById('charSpace').value);
-        var reveal = parseInt(document.getElementById('reveal').value) * 1000;
+        var reveal = parseInt(document.getElementById('reveal').value);
 
         var word = generateWord(minChars, maxChars);
         var wordDisplay = document.getElementById('sentWord');
