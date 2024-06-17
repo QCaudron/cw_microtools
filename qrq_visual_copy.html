@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3PJ6GY6YYD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-3PJ6GY6YYD');
+  </script>
+
+  <title>QRQ Visual Copy - K7DRQ</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+    integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="k7drq_styles.css" />
+
+  <style>
+    #progressContainer {
+      width: 100%;
+      background-color: #f3f3f3;
+      border: 1px solid #ccc;
+      margin-top: 20px;
+    }
+
+    #progressBar {
+      width: 0%;
+      height: 10px;
+      background-color: #4caf50;
+      text-align: center;
+      line-height: 30px;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>QRQ Visual Copy</h1>
+    <p class="subtitle">Part of the <a href=".">CW Microtools collection</a>.</p>
+
+    <form id="wordForm" class="pure-form pure-form-aligned">
+
+      <div class="text-inputs">
+        <label for="minChars">Send words between </label>
+        <input type="number" id="minChars" name="minChars" value="2">
+        <label for="maxChars">and</label>
+        <input type="number" id="maxChars" name="maxChars" value="7">
+        <label>letters long.</label>
+      </div>
+
+      <div class="text-inputs">
+      </div>
+
+      <div class="pure-control-group">
+        <label for="charDuration" class="slider-label">Character duration</label>
+        <input type="range" min="25" max="500" step="25" value="300" class="slider" id="charDuration">
+        &nbsp;<span class="slider-value" id="charDurationValue">300</span> ms
+      </div>
+      <div class="pure-control-group">
+        <label for="charSpace" class="slider-label">Inter-character space</label>
+        <input type="range" min="0" max="200" step="10" value="100" class="slider" id="charSpace">
+        &nbsp;<span class="slider-value" id="charSpaceValue">200</span> ms
+      </div>
+      <div class="pure-control-group">
+        <label for="reveal" class="slider-label">Reveal word after</label>
+        <input type="range" min="0.5" max="5" step="0.5" value="2" class="slider" id="reveal">
+        &nbsp;<span class="slider-value" id="revealValue">2</span> s
+      </div>
+
+      <div class="text-inputs">
+      </div>
+
+      <div style="display: flex; justify-content: center;">
+        <button type="button" class="button-go pure-button" onclick="sendWord()">Send a word</button>
+      </div>
+
+    </form>
+
+    <div id="progressContainer">
+      <div id="progressBar"></div>
+    </div>
+
+    <div style="padding-bottom: 3rem;">
+      <h1 id="sentWord" class="sent-word"></h1>
+    </div>
+
+
+
+    <footer class="footer">
+      K7DRQ's <a href=".">CW Microtools</a>
+    </footer>
+
+    <script>
+      const durationSlider = document.getElementById('charDuration');
+      const durationValue = document.getElementById('charDurationValue');
+      const spaceSlider = document.getElementById('charSpace');
+      const spaceValue = document.getElementById('charSpaceValue');
+      const revealSlider = document.getElementById('reveal');
+      const revealValue = document.getElementById('revealValue');
+
+      durationSlider.addEventListener('input', function () {
+        durationValue.textContent = durationSlider.value;
+      });
+
+      spaceSlider.addEventListener('input', function () {
+        spaceValue.textContent = spaceSlider.value;
+      });
+
+      revealSlider.addEventListener('input', function () {
+        revealValue.textContent = revealSlider.value;
+      });
+
+      let wordList = [];
+
+      fetch('assets/top5000.txt')
+        .then(response => response.text())
+        .then(text => wordList = text.split('\n'));
+
+      const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+      // Display the given character, wait for duration ms, then clear the display and wait for space ms
+      async function showChar(char, duration, space, lastChar = false) {
+        var wordDisplay = document.getElementById('sentWord');
+        wordDisplay.innerHTML = char.toUpperCase();
+        await sleep(duration);
+        wordDisplay.innerHTML = '';
+        if (!lastChar) {
+          await sleep(space);
+        }
+      }
+
+      // Pick a random word of the right length from wordList
+      function generateWord(minChars, maxChars) {
+        var words = wordList.filter(word => word.length >= minChars && word.length <= maxChars);
+        return words[Math.floor(Math.random() * words.length)];
+      }
+
+      // Update the progress bar
+      function updateProgressBar(duration) {
+        const progressBar = document.getElementById('progressBar');
+        let width = 0;
+        const interval = setInterval(() => {
+          if (width >= 100) {
+            clearInterval(interval);
+          } else {
+            width++;
+            progressBar.style.width = width + '%';
+          }
+        }, duration / 100);
+      }
+
+      // Send the word, one letter at a time, each character duration ms long and space ms between characters
+      async function sendWord() {
+        var minChars = parseInt(document.getElementById('minChars').value);
+        var maxChars = parseInt(document.getElementById('maxChars').value);
+        var charDuration = parseInt(document.getElementById('charDuration').value);
+        var charSpace = parseInt(document.getElementById('charSpace').value);
+        var reveal = parseInt(document.getElementById('reveal').value) * 1000;
+
+        var word = generateWord(minChars, maxChars);
+        var wordDisplay = document.getElementById('sentWord');
+
+        // Clear the display
+        wordDisplay.innerHTML = '';
+
+        // Display the word, only showing one uppercase letter at a time, deleting the previous character
+        for (var i = 0; i < word.length; i++) {
+          await showChar(word[i], charDuration, charSpace, i === word.length - 1);
+        }
+
+        // Start the progress bar
+        updateProgressBar(reveal);
+
+        // Wait for the progress bar to complete
+        await sleep(reveal);
+
+        // Display the full word
+        wordDisplay.innerHTML = word.toUpperCase();
+      }
+    </script>
+</body>
+
+</html>
