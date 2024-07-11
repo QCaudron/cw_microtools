@@ -50,7 +50,7 @@
         "NAME <CALLERNAME> <CALLERNAME>",
         "NR <CALLERNUMBER> <CALLERNUMBER>",
         "QSL? BK",
-        "BK QSL TNX <CALLERNAME> ES GL",
+        "BK RR TNX <CALLERNAME> ES GL",
         "73 <span style='text-decoration: overline'>AR</span> <CALLERCALL> DE <CQCALL> <span style='text-decoration: overline'>SK</span>",
         "BK TNX <CQNAME> ES GL",
         "73 <span style='text-decoration: overline'>AR</span> <CQCALL> DE <CALLERCALL> <span style='text-decoration: overline'>SK</span> E E",
