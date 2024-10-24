@@ -1,6 +1,6 @@
 // Some variables for within the QSOs
 const greetings = ["GM", "GA", "GE"];
-const RSTs = ["359", "559", "579", "599", "5NN"];
+const RSTs = ["359", "559", "579", "599"];
 const WX = ["SUNNY", "CLOUDY", "RAINING", "WINDY", "FOGGY", "CLEAR", "PARTLY CLOUDY"];
 const rigs = [
     "KX2", "KX3", "FT 857D", "FT 817ND", "FT 991A", "FT 450D", "FT 891", "IC 705",

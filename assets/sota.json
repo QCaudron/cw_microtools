@@ -21,8 +21,8 @@
         "CQ CQ SOTA DE <CQCALL> <CQCALL> K",
         "<CALLERCALL>",
         "<CALLERCALL> TU",
-        "<CQRST> <CQRST> BK",
-        "BK RR <CALLERRST> <CALLERRST> <CALLERQTH> BK",
+        "<CQRST> <CQRST2> BK",
+        "BK RR <CALLERRST> <CALLERRST2> <CALLERQTH> BK",
         "BK RR TU 73 E E",
         "E E"
     ]
