@@ -8,15 +8,19 @@
     ],
     "Instructions": [
         "Thank <CALLERNAME> for the QSO.",
-        "Wish <CALLERCALL> well and sign off.",
+        "Wish them well.",
+        "Sign off.",
         "Thank <CQNAME> for the QSO.",
-        "Wish <CQCALL> well and sign off.",
+        "Wish them well.",
+        "Sign off.",
         "Dit dit."
     ],
     "Lines": [
-        "OK <CALLERNAME> TNX FER FB QSO ES HP CUAGN 73 <span style='text-decoration: overline'>AR</span>",
+        "OK <CALLERNAME> TNX FER FB QSO",
+        "ES HP CUAGN 73 <span style='text-decoration: overline'>AR</span>",
         "<CALLERCALL> DE <CQCALL> TU <span style='text-decoration: overline'>SK</span>",
-        "OK <CQNAME> TNX FER QSO ES HP CUAGN 73 <span style='text-decoration: overline'>AR</span>",
+        "OK <CQNAME> TNX FER FB QSO",
+        "ES HP CUAGN 73 <span style='text-decoration: overline'>AR</span>",
         "<CQCALL> DE <CALLERCALL> TU <span style='text-decoration: overline'>SK</span> E E",
         "E E"
     ]
