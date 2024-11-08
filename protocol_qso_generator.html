@@ -174,7 +174,9 @@
 
             greeting = greetings[Math.floor(Math.random() * greetings.length)];
             cqRST = RSTs[Math.floor(Math.random() * RSTs.length)];
+            cqRST2 = cqRST.replaceAll("9", "N");
             callerRST = RSTs[Math.floor(Math.random() * RSTs.length)];
+            callerRST2 = callerRST.replaceAll("9", "N");
 
             if (leading === "other") {
                 [cqCallsign, callerCallsign] = [callerCallsign, cqCallsign];
@@ -200,7 +202,7 @@
                         .replace(/<CQNAME>/g, cqName)
                         .replace(/<CQQTH>/g, cqQTH)
                         .replace(/<CQRST>/g, cqRST)
-                        .replace(/<CQRST2>/g, cqRST.replaceAll("9", "N"))
+                        .replace(/<CQRST2>/g, cqRST2)
                         .replace(/<CQRIG>/g, cqRig)
                         .replace(/<CQANT>/g, cqAnt)
                         .replace(/<CQPWR>/g, cqPower)
@@ -216,7 +218,7 @@
                         .replace(/<CALLERNAME>/g, callerName)
                         .replace(/<CALLERQTH>/g, callerQTH)
                         .replace(/<CALLERRST>/g, callerRST)
-                        .replace(/<CALLERRST2>/g, callerRST.replaceAll("9", "N"))
+                        .replace(/<CALLERRST2>/g, callerRST2)
                         .replace(/<CALLERRIG>/g, callerRig)
                         .replace(/<CALLERANT>/g, callerAnt)
                         .replace(/<CALLERPWR>/g, callerPower)
