@@ -1,12 +1,11 @@
 She wears a dress.
 The wind blows gently.
 The moon is bright tonight.
-Car is fast.
 The turtle moves very slowly.
 The stream is babbling.
 I want to make a craft with glue.
 The integrity is maintained.
-We go to park.
+We go to the park.
 The purchase is made.
 I have a pen.
 The earth is rotating.
@@ -128,8 +127,7 @@ The ambition is driven.
 I like to play.
 The flower is pretty.
 The car is parked outside.
-Car go vroom.
-I see bug.
+I see a bug.
 The city is busy.
 The pig is pink.
 Frog jump.
@@ -141,7 +139,7 @@ The wave is crashing.
 The milk is white.
 The task is completed.
 The compassion is shown.
-I see cat.
+I see a cat.
 The flowers are blooming.
 I see a plane in the sky.
 I like my friends.
@@ -199,7 +197,7 @@ I like to hop.
 The grain is stored.
 A rat can chew wood.
 The rain makes puddles in the ground.
-I see frog.
+I see a frog.
 Cake is big.
 The belief is strong.
 The car is blue.
@@ -241,12 +239,12 @@ The improvement is significant.
 I like my socks.
 The client is pleased.
 I like to play dress-up.
-Hat is big.
+My hat is big.
 The group is organizing.
 Moon is gray.
 The boat is sailing.
 The ice is cold.
-I see star.
+I see a star.
 The tree is planted.
 The goal is realized.
 The dusk is settling.
@@ -304,7 +302,6 @@ I have a doll.
 A cat likes to nap.
 The dog can run fast.
 I have a green frog.
-I play fun.
 I have spoon.
 I am not mad.
 The transaction is completed.
@@ -428,7 +425,7 @@ I have a drum.
 The community is gathering.
 The friend is helping.
 I like my blanket.
-I see bird.
+I see a bird.
 The sky is clear.
 I need to wash my car.
 Rain fall down.
@@ -513,7 +510,7 @@ He has a red bicycle.
 The moon comes out at night.
 Star is bright.
 She has a fish.
-I see turtle.
+I see the turtle.
 A rat is in the box.
 The environment is protected.
 The investment is wise.
@@ -570,7 +567,7 @@ The solution is provided.
 Boat on water.
 The clarity is achieved.
 The lightning is flashing.
-I eat apple.
+I eat an apple.
 I have a green backpack.
 The dog has a red ball.
 Soup is hot.
@@ -590,7 +587,7 @@ The hen is pecking grain.
 The fish is in the bowl.
 The advice is followed.
 The frog is jumping.
-I like car.
+I like cars.
 I have a new coloring book.
 I like my teddy bear.
 Water is cool.
@@ -607,7 +604,7 @@ The kid has a bat.
 The duck is yellow.
 The notification is read.
 She has a big hat.
-Tree is tall.
+The tree is tall.
 I have socks.
 The argument is heated.
 I need to clean my room.
@@ -626,7 +623,6 @@ The rain is wet.
 The viewer is watching.
 The fog is thickening.
 The species is saved.
-We go to zoo.
 I have a toy train.
 I like my friend.
 Grass is green.
@@ -757,7 +753,7 @@ I want to go on a treasure hunt.
 The morning is refreshing.
 The kitty is sleeping on the chair.
 The elephant has big ears.
-I see fish.
+I see a fish.
 I see a spider web in the corner.
 The trust is earned.
 I like to jump in puddles.
@@ -773,7 +769,7 @@ I see a rainbow in the sky.
 I paint a picture.
 The style is refined.
 A cat is sitting on the fence.
-Wind blow.
+Wind blows.
 I wear a shirt.
 The climber is ascending.
 The departure is noted.
@@ -830,7 +826,7 @@ We see the man.
 The frog hops.
 Fish swim.
 The science is understood.
-Sun is hot.
+The Sun is hot.
 A bug is on my leg.
 The bird is building a nest.
 The moon is full and round tonight.
@@ -899,7 +895,7 @@ We go to the park.
 The bonus is enjoyed.
 We are going to the zoo.
 I eat cookie.
-I like doll.
+I like dolls.
 The moon is setting.
 I like my toy.
 The event is spectacular.
@@ -993,7 +989,7 @@ I found a wallet on the street.
 The team is winning.
 I have a funny hat.
 The concentration is sharp.
-I see horse.
+I see a horse.
 I like my puzzle.
 He can run fast.
 She has a pink dress.
@@ -1019,7 +1015,6 @@ The conversation is meaningful.
 The frog is green.
 The frog is leaping.
 The moment is cherished.
-Train go choo.
 The door is closed.
 I have a headache today.
 The cake has candles on top.
@@ -1033,7 +1028,7 @@ The baby sleeps.
 The target is hit.
 The puppy is wagging its tail.
 The meteor is burning.
-I have fork.
+I have a fork.
 I clap hands.
 Cup is blue.
 The clouds look like fluffy animals.
@@ -1063,7 +1058,7 @@ I have a blue pen.
 The afternoon is relaxing.
 He is ten.
 The dog dug.
-Bird fly high.
+Birds fly high.
 The prototype is created.
 The plant is nurtured.
 I have a little toy car.
@@ -1090,7 +1085,7 @@ We can play.
 The moon is round and bright.
 The galaxy is moving.
 She has a beautiful smile.
-I have pillow.
+I have a pillow.
 The festival is beginning.
 The box has a lid.
 The victory is sweet.
@@ -1150,7 +1145,7 @@ A big rock is hot.
 I see a fish.
 I have a fork.
 The field is fertile.
-Frog hop.
+Frogs hop.
 The water is cool.
 She is riding a bicycle.
 I like toy.
@@ -1170,7 +1165,7 @@ The freedom is cherished.
 I have a red bike.
 The study is analyzed.
 The speaker is presenting.
-I see rabbit.
+I see a rabbit.
 The satisfaction is guaranteed.
 The dog plays with the ball.
 Look at the big red balloon!
@@ -1263,18 +1258,16 @@ We ride bikes.
 I draw picture.
 The portion is satisfying.
 The sincerity is evident.
-I have drum.
+I have a drum.
 She has a toy.
 The bird can sing.
 The observation is keen.
 The purpose is served.
-Bear is brown.
 The lesson is learned.
 The fish is blue.
 The data is collected.
-Sky is dark.
-I have hat.
+I have a hat.
 The calendar is updated.
 She sings beautifully.
 The sun shines.
-Cat purr soft.
+Cats purr.
