@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3PJ6GY6YYD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-3PJ6GY6YYD');
+  </script>
+
+  <title>Sentence Generator - K7DRQ</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+    integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="k7drq_styles.css" />
+
+  <style>
+    .alphabet-checkbox {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      margin: 5px;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      line-height: 20px;
+      font-size: 20px;
+      background-color: #eee;
+    }
+
+    .alphabet-checkbox input[type="checkbox"] {
+      display: none;
+    }
+
+    .alphabet-checkbox label {
+      display: block;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      /* Smooth transition for color change */
+    }
+
+    .qwerty-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .result-list {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 0.2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>K7DRQ Sentence Generator</h1>
+    <p class="subtitle">Part of the <a href=".">CW Microtools
+        collection</a>.</p>
+
+    <form id="wordForm" class="pure-form">
+
+      <div class="qwerty-grid pure-form">
+        <div class="alphabet-checkbox" id="divKeyQ">
+          <input type="checkbox" id="checkboxQ" name="letter" value="Q" onchange="toggleKey('Q')">
+          <label for="checkboxQ">Q</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyW">
+          <input type="checkbox" id="checkboxW" name="letter" value="W" onchange="toggleKey('W')">
+          <label for="checkboxW">W</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyE">
+          <input type="checkbox" id="checkboxE" name="letter" value="E" onchange="toggleKey('E')">
+          <label for="checkboxE">E</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyR">
+          <input type="checkbox" id="checkboxR" name="letter" value="R" onchange="toggleKey('R')">
+          <label for="checkboxR">R</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyT">
+          <input type="checkbox" id="checkboxT" name="letter" value="T" onchange="toggleKey('T')">
+          <label for="checkboxT">T</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyY">
+          <input type="checkbox" id="checkboxY" name="letter" value="Y" onchange="toggleKey('Y')">
+          <label for="checkboxY">Y</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyU">
+          <input type="checkbox" id="checkboxU" name="letter" value="U" onchange="toggleKey('U')">
+          <label for="checkboxU">U</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyI">
+          <input type="checkbox" id="checkboxI" name="letter" value="I" onchange="toggleKey('I')">
+          <label for="checkboxI">I</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyO">
+          <input type="checkbox" id="checkboxO" name="letter" value="O" onchange="toggleKey('O')">
+          <label for="checkboxO">O</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyP">
+          <input type="checkbox" id="checkboxP" name="letter" value="P" onchange="toggleKey('P')">
+          <label for="checkboxP">P</label>
+        </div>
+
+        <div class="alphabet-checkbox" style="visibility: hidden;">
+          <!-- This empty div creates the gap in the layout -->
+        </div>
+
+        <div class="alphabet-checkbox" id="divKeyA" style="margin-left: -1rem;">
+          <input type="checkbox" id="checkboxA" name="letter" value="A" onchange="toggleKey('A')">
+          <label for="checkboxA">A</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyS" style="margin-left: -1rem;">
+          <input type="checkbox" id="checkboxS" name="letter" value="S" onchange="toggleKey('S')">
+          <label for="checkboxS">S</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyD" style="margin-left: -1rem;">
+          <input type="checkbox" id="checkboxD" name="letter" value="D" onchange="toggleKey('D')">
+          <label for="checkboxD">D</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyF" style="margin-left: -1rem;">
+          <input type="checkbox" id="checkboxF" name="letter" value="F" onchange="toggleKey('F')">
+          <label for="checkboxF">F</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyG" style="margin-left: -1rem;">
+          <input type="checkbox" id="checkboxG" name="letter" value="G" onchange="toggleKey('G')">
+          <label for="checkboxG">G</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyH" style="margin-left: -1rem;">
+          <input type="checkbox" id="checkboxH" name="letter" value="H" onchange="toggleKey('H')">
+          <label for="checkboxH">H</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyJ" style="margin-left: -1rem;">
+          <input type="checkbox" id="checkboxJ" name="letter" value="J" onchange="toggleKey('J')">
+          <label for="checkboxJ">J</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyK" style="margin-left: -1rem;">
+          <input type="checkbox" id="checkboxK" name="letter" value="K" onchange="toggleKey('K')">
+          <label for="checkboxK">K</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyL" style="margin-left: -1rem;">
+          <input type="checkbox" id="checkboxL" name="letter" value="L" onchange="toggleKey('L')">
+          <label for="checkboxL">L</label>
+        </div>
+
+        <div class="alphabet-checkbox" style="visibility: hidden;">
+          <!-- This empty div creates the gap in the layout -->
+        </div>
+
+        <div class="alphabet-checkbox" id="divKeyZ">
+          <input type="checkbox" id="checkboxZ" name="letter" value="Z" onchange="toggleKey('Z')">
+          <label for="checkboxZ">Z</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyX">
+          <input type="checkbox" id="checkboxX" name="letter" value="X" onchange="toggleKey('X')">
+          <label for="checkboxX">X</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyC">
+          <input type="checkbox" id="checkboxC" name="letter" value="C" onchange="toggleKey('C')">
+          <label for="checkboxC">C</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyV">
+          <input type="checkbox" id="checkboxV" name="letter" value="V" onchange="toggleKey('V')">
+          <label for="checkboxV">V</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyB">
+          <input type="checkbox" id="checkboxB" name="letter" value="B" onchange="toggleKey('B')">
+          <label for="checkboxB">B</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyN">
+          <input type="checkbox" id="checkboxN" name="letter" value="N" onchange="toggleKey('N')">
+          <label for="checkboxN">N</label>
+        </div>
+        <div class="alphabet-checkbox" id="divKeyM">
+          <input type="checkbox" id="checkboxM" name="letter" value="M" onchange="toggleKey('M')">
+          <label for="checkboxM">M</label>
+        </div>
+      </div>
+
+      <div class="button-row" style="margin-top: 2rem;">
+        <button class=" pure-button" type="button" onclick="selectNone()">Select None</button>
+        <button class="pure-button" type="button" onclick="selectSubset('BC1')">All BC1</button>
+        <button class="pure-button" type="button" onclick="selectAll()">Select All</button>
+      </div>
+
+      <div class="button-row">
+        <label>BC2 :</label>
+        <button class="pure-button" type="button" onclick="selectSubset('KMY')">KMY</button>
+        <button class="pure-button" type="button" onclick="selectSubset('QXV')">QXV</button>
+        <button class="pure-button" type="button" onclick="selectSubset('ZJ')">ZJ</button>
+      </div>
+
+      <hr style="margin-top: 2rem; margin-bottom: 2rem;" />
+
+      <div class="text-inputs">
+        <label for="maxWords">Give me</label>
+        <input type="number" id="maxSentences" name="maxSentences" value="10">
+        <label>sentences</label>
+      </div>
+
+      <div style="display: flex; justify-content: center;">
+        <button type="button" class="button-go pure-button" onclick="generateSentences()">Generate
+          sentences</button>
+      </div>
+
+      <hr style="margin-top: 2rem;" />
+
+    </form>
+
+
+
+    <div id="generatedSentenceList" style="padding-bottom: 3rem;"></div>
+  </div>
+
+  <footer class="footer">
+    K7DRQ's <a href=".">CW Microtools</a>
+  </footer>
+
+  <script>
+
+    function loadWords() {
+      fetch('assets/sentences.txt')
+        .then(response => response.text())
+        .then(text => sentenceList = text.split('\n'));
+    }
+
+    function toggleKey(key) {
+      var checkbox = document.getElementById('checkbox' + key);
+      var keydiv = document.getElementById('divKey' + key);
+
+      if (!checkbox.checked) {
+        keydiv.style.backgroundColor = '#eee';
+        keydiv.style.color = '#000'
+      } else {
+        keydiv.style.backgroundColor = '#999';
+        keydiv.style.color = '#fff'
+      }
+    }
+
+    function selectSubset(subset) {
+      var allBC1 = ['R', 'E', 'A', 'T', 'I', 'N', 'P', 'S', 'G', 'L', 'C', 'D', 'H', 'O', 'F', 'U', 'W', 'B'];
+      var REA = ['R', 'E', 'A', 'U', 'W', 'B'];
+      var TIN = ['T', 'I', 'N', 'R', 'E', 'A'];
+      var PSG = ['P', 'S', 'G', 'T', 'I', 'N'];
+      var LCD = ['L', 'C', 'D', 'P', 'S', 'G'];
+      var HOF = ['H', 'O', 'F', 'L', 'C', 'D'];
+      var UWB = ['U', 'W', 'B', 'H', 'O', 'F'];
+      var KMY = ['K', 'M', 'Y'];
+      var QXV = ['Q', 'X', 'V'];
+      var ZJ = ['Z', 'J'];
+
+      if (subset === 'BC1') {
+        var subsetWords = allBC1;
+      }
+      if (subset === 'KMY') {
+        var subsetWords = KMY.concat(allBC1);
+      }
+      if (subset === 'QXV') {
+        var subsetWords = QXV.concat(allBC1);
+      }
+      if (subset === 'ZJ') {
+        var subsetWords = ZJ.concat(allBC1);
+      }
+
+      selectNone()
+
+      subsetWords.forEach(function (letter) {
+        var checkbox = document.querySelector('input[value="' + letter + '"]');
+        if (checkbox) {
+          checkbox.checked = true;
+        }
+        toggleKey(letter);
+      });
+    }
+
+    function selectAll() {
+      var checkboxes = document.getElementsByName('letter');
+      checkboxes.forEach(function (checkbox) {
+        checkbox.checked = true;
+        toggleKey(checkbox.value);
+      });
+    }
+
+    function selectNone() {
+      var checkboxes = document.getElementsByName('letter');
+      checkboxes.forEach(function (checkbox) {
+        checkbox.checked = false;
+        toggleKey(checkbox.value);
+      });
+    }
+
+    function generateSentences() {
+
+      // Get checked letters
+      var checkedLetters = [" ", ".", ",", "!", "?"];
+      var checkboxes = document.getElementsByName('letter');
+      checkboxes.forEach(function (checkbox) {
+        if (checkbox.checked) {
+          checkedLetters.push(checkbox.value);
+        }
+      });
+
+      // Get generation parameters
+      var maxSentences = parseInt(document.getElementById('maxSentences').value);
+
+      // Shuffle the sentences
+      sentenceList = sentenceList.sort((a, b) => 0.5 - Math.random());
+
+      // Find sentences that match the criteria
+      var sentences = filterSentences(checkedLetters, maxSentences);
+
+      displaySentences(sentences);
+    }
+
+    function filterSentences(letters, maxSentences) {
+      var filteredWords = [];
+
+      for (let i = 0; i < sentenceList.length && filteredWords.length < maxSentences; i++) {
+        const sentence = sentenceList[i];
+
+        if (
+          sentence.split('').every(function (char) {
+            return letters.includes(char.toUpperCase());
+          }) &&
+          !filteredWords.includes(sentence)
+        ) {
+          filteredWords.push(sentence);
+        }
+      }
+
+      return filteredWords;
+    }
+
+    function displaySentences(words) {
+      var wordList = document.getElementById('generatedSentenceList');
+      wordList.innerHTML = "<h2>Generated Sentences:</h2><ul style='margin-bottom: 2rem;'>";
+      words.forEach(function (word) {
+        wordList.innerHTML += "<li class='result-list'>" + word + "</li>";
+      });
+      wordList.innerHTML += '</ul><br />';
+    }
+
+    var sentenceList = [];
+    loadWords();
+
+  </script>
+</body>
+
+</html>
