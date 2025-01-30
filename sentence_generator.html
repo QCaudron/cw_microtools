@@ -237,7 +237,7 @@
 
   <script>
 
-    function loadWords() {
+    function loadSentences() {
       fetch('assets/sentences.txt')
         .then(response => response.text())
         .then(text => sentenceList = text.split('\n'));
@@ -350,17 +350,22 @@
       return filteredWords;
     }
 
-    function displaySentences(words) {
-      var wordList = document.getElementById('generatedSentenceList');
-      wordList.innerHTML = "<h2>Generated Sentences:</h2><ul style='margin-bottom: 2rem;'>";
-      words.forEach(function (word) {
-        wordList.innerHTML += "<li class='result-list'>" + word + "</li>";
+    function displaySentences(sentences) {
+      var sentenceList = document.getElementById('generatedSentenceList');
+      sentenceList.innerHTML = "<h2>Generated Sentences:</h2><ul style='margin-bottom: 2rem;'>";
+
+      // Sort the list of sentences from short to long
+      sentences = sentences.sort((a, b) => a.length - b.length);
+
+      // Add the sentences to the display
+      sentences.forEach(function (sentence) {
+        sentenceList.innerHTML += "<li class='result-list'>" + sentence + "</li>";
       });
-      wordList.innerHTML += '</ul><br />';
+      sentenceList.innerHTML += '</ul><br />';
     }
 
     var sentenceList = [];
-    loadWords();
+    loadSentences();
 
   </script>
 </body>
