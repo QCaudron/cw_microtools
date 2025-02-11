@@ -284,37 +284,40 @@
     }
 
     function selectSubset(subset) {
-      var allBC1 = ['R', 'E', 'A', 'T', 'I', 'N', 'P', 'S', 'G', 'L', 'C', 'D', 'H', 'O', 'F', 'U', 'W', 'B'];
-      var REA = ['R', 'E', 'A', 'U', 'W', 'B'];
-      var TIN = ['T', 'I', 'N', 'R', 'E', 'A'];
-      var PSG = ['P', 'S', 'G', 'T', 'I', 'N'];
-      var LCD = ['L', 'C', 'D', 'P', 'S', 'G'];
-      var HOF = ['H', 'O', 'F', 'L', 'C', 'D'];
-      var UWB = ['U', 'W', 'B', 'H', 'O', 'F'];
+      var REA = ['R', 'E', 'A'];
+      var TIN = ['T', 'I', 'N'];
+      var PSG = ['P', 'S', 'G'];
+      var LCD = ['L', 'C', 'D'];
+      var HOF = ['H', 'O', 'F'];
+      var UWB = ['U', 'W', 'B'];
       var KMY = ['K', 'M', 'Y'];
       var QXV = ['Q', 'X', 'V'];
       var ZJ = ['Z', 'J'];
+      var allBC1 = REA.concat(TIN, PSG, LCD, HOF, UWB);
+
+      // Append QXV and ZJ
+
 
       if (subset === 'BC1') {
         var subsetWords = allBC1;
       }
       if (subset === 'REA') {
-        var subsetWords = REA;
+        var subsetWords = REA.concat(UWB, HOF);
       }
       if (subset === 'TIN') {
-        var subsetWords = TIN;
+        var subsetWords = TIN.concat(REA, UWB);
       }
       if (subset === 'PSG') {
-        var subsetWords = PSG;
+        var subsetWords = PSG.concat(TIN, REA);
       }
       if (subset === 'LCD') {
-        var subsetWords = LCD;
+        var subsetWords = LCD.concat(PSG, TIN);
       }
       if (subset === 'HOF') {
-        var subsetWords = HOF;
+        var subsetWords = HOF.concat(LCD, PSG);
       }
       if (subset === 'UWB') {
-        var subsetWords = UWB;
+        var subsetWords = UWB.concat(HOF, LCD);
       }
       if (subset === 'KMY') {
         var subsetWords = KMY.concat(allBC1);
