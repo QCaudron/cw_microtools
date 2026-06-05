@@ -141,19 +141,19 @@
             cqCallsign = document.getElementById("yourCall").value;
             cqName = document.getElementById("yourName").value;
             cqQTH = document.getElementById("yourQTH").value;
-            cqNumber = document.getElementById("yourNumber").value;
-            // Number is optional here
-            if (cqNumber === "") {
-                cqNumber = Math.floor(Math.random() * 10000) + 100;
-            }
-            cqFDClass = generateFDClass();
+            const isFieldDay = document.getElementById("qsoType").value === "field_day";
+            const rawYourNumber = document.getElementById("yourNumber").value;
+            const rawTheirNumber = document.getElementById("theirNumber").value;
+
+            cqNumber = rawYourNumber || Math.floor(Math.random() * 10000) + 100;
+            cqFDClass = isFieldDay ? (rawYourNumber ? parseFDClass(rawYourNumber) : generateFDClass()) : generateFDClass();
 
             callerCallsign = document.getElementById("theirCall").value;
             callerName = document.getElementById("theirName").value;
             callerQTH = document.getElementById("theirQTH").value;
-            callerNumber = document.getElementById("theirNumber").value;
+            callerNumber = rawTheirNumber || Math.floor(Math.random() * 10000) + 100;
             callerFDSection = fdSections[Math.floor(Math.random() * fdSections.length)];
-            callerFDClass = generateFDClass();
+            callerFDClass = isFieldDay ? (rawTheirNumber ? parseFDClass(rawTheirNumber) : generateFDClass()) : generateFDClass();
 
             withInstructions = document.getElementById("includeInstructions").checked;
             leading = document.getElementById("leading").value;
@@ -196,6 +196,26 @@
             }
 
             return classSize + fdClassDesignator;
+        }
+
+        function parseFDClass(raw) {
+            const s = raw.replace(/\s/g, '').toUpperCase();
+            const designators = ["A", "B", "C", "D", "E", "F"];
+            const smallStations = ["B", "D", "E"];
+
+            const numMatch = s.match(/^\d{1,2}/);
+            const letterMatch = s.match(/[A-F]$/);
+
+            const letter = letterMatch
+                ? letterMatch[0]
+                : designators[Math.floor(Math.random() * designators.length)];
+            const num = numMatch
+                ? numMatch[0]
+                : (smallStations.includes(letter)
+                    ? Math.floor(Math.random() * 2) + 1
+                    : Math.floor(Math.random() * 15) + 1);
+
+            return num + letter;
         }
 
 
@@ -272,7 +292,7 @@
 
 
         // Load all data on page load
-        let allProtocols;
+        let allProtocols, firstNames, usStates, fdSections;
         window.addEventListener('DOMContentLoaded', async () => {
             allProtocols = await loadContestProtocols();
             firstNames = await loadNames();
@@ -288,5 +308,13 @@
             // Update the value display when slider value changes
             sliderValueDisplay.textContent = slider.value + ' %';
         });
+
+        // Update number field placeholders based on contest type
+        function updateNumberPlaceholders() {
+            const isFieldDay = document.getElementById("qsoType").value === "field_day";
+            document.getElementById("yourNumber").placeholder = isFieldDay ? "Your FD Designation (e.g. 2A)" : "Your Number";
+            document.getElementById("theirNumber").placeholder = isFieldDay ? "Their FD Designation (e.g. 6F)" : "Their Number";
+        }
+        document.getElementById("qsoType").addEventListener('change', updateNumberPlaceholders);
 
     </script>

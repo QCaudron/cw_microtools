@@ -79,7 +79,7 @@ async function loadFDSections() {
     try {
         const response = await fetch('assets/fd_sections.txt');
         const data = await response.text();
-        const lines = data.split('\n');
+        const lines = data.split('\n').filter(line => line.trim() !== '');
         const sections = lines.map(line => {
             return line.split('\t')[1].trim();
         });
