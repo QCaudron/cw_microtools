@@ -240,7 +240,7 @@
     function loadSentences() {
       fetch('assets/sentences.txt')
         .then(response => response.text())
-        .then(text => sentenceList = text.split('\n'));
+        .then(text => sentenceList = text.split('\n').filter(line => line.trim() !== ''));
     }
 
     function toggleKey(key) {
