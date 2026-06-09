@@ -141,18 +141,22 @@
             cqCallsign = document.getElementById("yourCall").value;
             cqName = document.getElementById("yourName").value;
             cqQTH = document.getElementById("yourQTH").value;
+            callerCallsign = document.getElementById("theirCall").value;
+            callerName = document.getElementById("theirName").value;
+            callerQTH = document.getElementById("theirQTH").value;
+
             const isFieldDay = document.getElementById("qsoType").value === "field_day";
             const rawYourNumber = document.getElementById("yourNumber").value;
             const rawTheirNumber = document.getElementById("theirNumber").value;
 
+            // Save raw QTH values before random fallbacks — used for FD section
+            const rawCqQTH = cqQTH;
+            const rawCallerQTH = callerQTH;
+
             cqNumber = rawYourNumber || Math.floor(Math.random() * 10000) + 100;
             cqFDClass = isFieldDay ? (rawYourNumber ? parseFDClass(rawYourNumber) : generateFDClass()) : generateFDClass();
 
-            callerCallsign = document.getElementById("theirCall").value;
-            callerName = document.getElementById("theirName").value;
-            callerQTH = document.getElementById("theirQTH").value;
             callerNumber = rawTheirNumber || Math.floor(Math.random() * 10000) + 100;
-            callerFDSection = fdSections[Math.floor(Math.random() * fdSections.length)];
             callerFDClass = isFieldDay ? (rawTheirNumber ? parseFDClass(rawTheirNumber) : generateFDClass()) : generateFDClass();
 
             withInstructions = document.getElementById("includeInstructions").checked;
@@ -167,9 +171,6 @@
             if (callerQTH === "") {
                 callerQTH = usStates[Math.floor(Math.random() * usStates.length)];
             }
-            if (callerNumber === "") {
-                callerNumber = Math.floor(Math.random() * 10000) + 100;
-            }
 
             greeting = greetings[Math.floor(Math.random() * greetings.length)];
             cqRST = RSTs[Math.floor(Math.random() * RSTs.length)];
@@ -180,7 +181,15 @@
                 [cqName, callerName] = [callerName, cqName];
                 [cqQTH, callerQTH] = [callerQTH, cqQTH];
                 [cqNumber, callerNumber] = [callerNumber, cqNumber];
+                [cqFDClass, callerFDClass] = [callerFDClass, cqFDClass];
             }
+
+            // FD section: use the caller's raw QTH (pre-fallback) when provided.
+            // If answering, the caller is "you", so use rawCqQTH; else use rawCallerQTH.
+            const fdSectionSource = leading === "other" ? rawCqQTH : rawCallerQTH;
+            callerFDSection = isFieldDay
+                ? (fdSectionSource || fdSections[Math.floor(Math.random() * fdSections.length)])
+                : fdSections[Math.floor(Math.random() * fdSections.length)];
         }
 
 
